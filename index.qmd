@@ -1,0 +1,29 @@
+---
+title: "Seminario misure implicite"
+subitle: Storia, esperimenti e analisi dei dati
+affiliation: Master di II livello in psicologia quantitativa
+author: "Ottavia Epifania"
+format: 
+  html: 
+   embed-resources: true
+   theme: quarz
+lang: it
+
+---
+
+# Introduzione
+
+[Concetti base della misurazione esplicita e implicita](introduzione-inquisit/lezione-01-master-psqt.pdf)
+
+
+# Esperimenti
+
+[Esperimenti in inqusit](introduzione-inquisit/Lezione-inquisit-master-psqt.pdf)
+
+# Analisi dei dati
+
+[Analisi dei dati IAT con i metodi classici](analisi/Lezione-02-master-psqt-epifania.pdf)
+
+[Analisi dei dati IAT con i GLMMs](analisi/Lezione-02a-master-psqt-epifania.pdf)
+
+[Download data](analisi/data/iat_data.dat)

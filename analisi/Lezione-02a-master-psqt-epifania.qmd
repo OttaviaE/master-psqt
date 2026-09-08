@@ -1,0 +1,1769 @@
+---
+title: "Misurazione Implicita in Psicologia:"
+subtitle: "Un approccio diverso per l'analisi dei dati IAT"
+author: "Ottavia M. Epifania"
+format:
+  beamer:
+    slide-level: 3
+    theme: Montpellier
+    colortheme: dove
+    innertheme: rounded
+    navigation: horizontal
+    highlight-style: tango
+    classoption: compress, aspectratio=149
+header-includes:
+    # - \usetheme[compressed]{Singapore}
+    - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
+    - \AtBeginDocument{\institute[]{Master di II livello in Psicologia quantitativa}}
+    - \AtBeginSubsection{}
+    - \AtBeginDocument{\date[]{11 Settembre 2026}}
+    - \usecolortheme{dove}
+    - \useinnertheme{rounded}
+    - \useoutertheme{miniframes}
+    - \usepackage{graphicx} 
+    - \usepackage{setspace}
+    - \usepackage{tabularx}
+    - \usepackage{tikzsymbols}
+    - \usepackage{subcaption}
+    - \usepackage{tikz}
+    - \usepackage{multirow}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{spot}
+    - \usepackage{tabularx}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{booktabs}
+    - \setbeamertemplate{navigation symbols}{}
+    - \newcommand\Factor{1.2}
+    - \setbeamerfont{subtitle}{size=\large, series=\bfseries}
+    - \setbeamercolor{frametitle}{bg=background}
+    - \setbeamertemplate{frametitle}{\color{template}\small \bfseries\insertframetitle\par\vskip-6pt\hrulefill}
+    - \setbeamertemplate{navigation symbols}[default]
+    - \definecolor{template}{RGB}{158, 158, 158}
+    - \definecolor{latenti}{RGB}{54, 114, 89}
+    - \definecolor{manifeste}{RGB}{179, 7, 27}
+    - \definecolor{background}{RGB}{251, 251, 251}
+    - \definecolor{highlight}{RGB}{18, 10, 143}
+    - \definecolor{giallo}{RGB}{204 204 204}
+    - \definecolor{blu}{RGB}{177 11 37}
+    - \definecolor{orangered2}{RGB}{238,64,0}
+    - \definecolor{typical}{RGB}{8, 69, 148}
+    - \definecolor{springgreen}{RGB}{0,205,102}
+    - \setbeamercolor{frametitle}{fg=blu, bg = white}
+    - \setbeamercolor{item}{fg=giallo}
+    - \setbeamercolor{caption name}{fg=blu}
+    - \setbeamercolor{section name}{fg=white}
+    - \setbeamercolor{subsection name}{fg=white}
+    - \setbeamersize{text margin left=3mm,text margin right=3mm} 
+    - \def\tikzoverlay{\tikz[remember picture, overlay]\node[every overlay node]}
+    - \definecolor{person}{RGB}{33, 113, 181}
+    - \definecolor{question}{RGB}{181, 102, 33}
+    - \newcommand*{\sbj}[1]{\textcolor{person}{#1}}
+    - \newcommand*{\colit}[1]{\textcolor{question}{#1}}
+    - \newcommand*{\high}[1]{\textcolor{highlight}{#1}}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+ if (!is.null(n <- options$out.lines)) {
+ x <- xfun::split_lines(x)
+ if (length(x) > n) {
+ # truncate the output
+ x <- c(head(x, n), "....\n")
+ }
+ x <- paste(x, collapse = "\n")
+ }
+ hook_output(x, options)
+ })
+library(ggplot2)
+library(lme4)
+```
+
+
+# Struttura Fully-Crossed
+
+## Implicit Association Test
+
+###
+
+\small
+
+
+\begin{block}{12 stimoli target}
+\begin{columns}
+\column{.50\linewidth}
+\centering
+White people faces
+\includegraphics[width=\linewidth]{img/white.png}
+\column{.50\linewidth}
+\centering
+Black people faces
+\includegraphics[width=\linewidth]{img/black.png}
+\end{columns}
+\end{block}
+
+\begin{block}{16 stimoli attributo}
+
+\begin{columns}[T]
+\begin{column}{.50\linewidth}
+\begin{center}
+\color{blue}Attributi positivi
+\end{center}
+Good, laughter, pleasure, glory, peace, happy, joy, love
+\end{column}
+
+\begin{column}{.50\linewidth}
+\begin{center}
+\color{alert}Attributi negativi
+\end{center}
+
+Evil, bad, horrible, terrible, nasty, pain, failure, hate
+\end{column}
+\end{columns}
+\end{block}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Condizione White-Good/Black-Bad (WGBB)
+:::
+
+::: {.column width="50%"}
+Condizione Black-Good/White-Bad (WGBB)
+:::
+
+::::
+
+### 
+
+
+```{=latex}
+\tikzstyle{respondent} = [rectangle, minimum width=1.5cm, minimum height=1cm,text centered, draw=white]
+\tikzstyle{stimulus} = [rectangle, minimum width=1.5cm, minimum height=1cm,text centered, draw=white]
+\tikzstyle{trial} = [rectangle, minimum width=1cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=1cm, text width =2.5cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{condition} = [rectangle, rounded corners,draw=black,text width=2cm, text height=6.5cm]
+
+\centering
+\scalebox{.50}{
+	\begin{tikzpicture}[inner sep=1pt,auto=left, node distance=2cm,>=latex']
+ 				 
+ 				\node(s1) at(2, 16)  [respondent]  {$p_1$};
+ 				\node(s2) at (2, 11) [respondent] {$p_2$};
+ 				\node(s3) at (2, 5.5) [respondent] {$p_3$};
+ 				\node(t1) at (12, 17) [ trial] {};
+ 				\node(t2) at (12, 15.5) [trial] {};
+ 				\node(t3) at (12, 14) [trial] {};
+ 				\node(t4) at (12, 12.5) [trial] {};
+ 				\node(t5) at (12, 9) [trial] {};
+ 				\node(t6) at (12, 7.5) [trial] {};
+ 				\node(t7) at (12, 6) [trial] {};
+ 				\node(t8) at (12, 4.5) [trial] {};
+ 				\node(stim1) at(22, 13)  [stimulus]  {\Smiley[3]};
+ 				\node(stim2) at (22, 7) [stimulus] {\Sleepey[3]};
+ 				\node at (12, 14.8) [condition, dashed,ultra thick] {};  
+ 				\node at (12, 6.8) [condition, black,ultra thick] {};  
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t1.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t2.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t3.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t4.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t5.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t6.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t7.west);
+ 				\draw [->, shorten >= +3pt] (s1.east) -- (t8.west);
+ 				\draw [->, shorten >= +3pt] (s2.east) -- (t8.west);
+ 				\draw [->, shorten >= +3pt] (s3.east) -- (t8.west);
+ 				\draw [<-, shorten <= +3pt] (t1.east)  -- (stim1.west); 
+ 				\draw [<-, shorten <= +3pt] (t2.east)  -- (stim2.west); 
+ 	  			\draw [<-, shorten <= +3pt] (t3.east)  -- (stim1.west); 
+ 	 			\draw [<-, shorten <= +3pt] (t4.east)  -- (stim2.west); 
+ 	  			\draw [<-, shorten <= +3pt] (t5.east)  -- (stim1.west); 
+ 	 \draw [<-, shorten <= +3pt] (t6.east)  -- (stim2.west); 
+ 	  	\draw [<-, shorten <= +3pt] (t7.east)  -- (stim1.west); 
+ 	 \draw [<-, shorten <= +3pt] (t8.east)  -- (stim2.west); 
+ 			\end{tikzpicture}
+}
+
+```
+
+
+
+## Scoring
+
+
+### Person-level scores
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+$$s_p = \dfrac{\bar{X}_{p,\text{comp}} - \bar{X}_{p,\text{inc}}}{sd_{\text{pooled}}}$$
+
+:::
+
+. . . 
+
+::: {.column width="50%"}
+
+:::{.callout-tip}
+
+## Vantaggi
+
+Facile da calcolare
+
+Facile da interpretare
+:::
+
+:::
+
+::::
+
+. . . 
+
+::: {.callout-warning}
+
+
+## Assunzioni Implicite
+
+1. Essere lenti (o meno accurati) in una condizione EQUIVALE ad essere veloci (o più accurati) nell'altra condizione: $0$ implica assenza di preferenza/bias
+
+2. Tutti gli stimoli hanno lo stesso effetto sulle risposte
+:::
+
+## Il problema
+
+### 
+
+\begin{block}{I rispondenti sono fattori random}
+		
+Campione prelevato da una popolazione più ampia
+		
+
+È necessario riconoscere la variabilità del campionamento
+		
+I risultati possono essere generalizzati ad altri rispondenti appartenenti alla stessa popolazione
+\end{block}
+	
+
+\begin{block}{Gli stimoli sono fattori fissi}
+		
+Presi come intera popolazione
+		
+Non c'è variabilità del campionamento
+		
+Non è necessario generalizzare i risultati perché gli stimoli sono la popolazione
+		
+\end{block}
+
+### 
+
+\begin{block}{Generalizzabilità}
+		
+\small
+		
+La generalizzabilità è limitata al set specifico di stimoli utilizzato nell'esperimento
+		
+I risultati possono essere generalizzati se e solo se viene utilizzato esattamente lo stesso set di stimoli
+		
+		
+\end{block}
+
+	
+\begin{block}{Robustezza dei risultati}
+		
+		
+La variabilità casuale a livello degli stimoli potrebbe aumentare la probabilità di commettere errori di Tipo I
+		
+La media degli stimoli per ottenere punteggi a livello di persona porta a stime distorte a causa del rumore nei dati
+\end{block}
+	
+	
+\begin{block}{Perdita di informazione}
+		
+		
+Non viene considerata tutta la variabilità né tutte le informazioni che possono essere ottenute da essa
+		
+Ogni stimolo è considerato come se fosse ugualmente informativo
+\end{block}
+
+## Una possibile soluzione
+
+### 
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+\Large
+
+$$\Sigma$$
+
+\normalsize
+
+Permette di tenere in considerazione la variabilità che si può incontrare a vari livelli, partizionando la varianza d'errore 
+
+
+
+
+:::
+
+::: {.column width="50%"}
+\Large
+
+$$\psi$$
+
+\normalsize
+
+Permette di dare un'interpretazione di tipo psicometrico sia al comportamento delle persone sia al funzionamento degli stimoli 
+
+
+:::
+
+::::
+
+::::{.columns}
+
+::: {.column width="50%"}
+\centering
+
+Modelli lineari a effetti misti
+
+:::
+
+::: {.column width="50%"}
+\centering
+
+Modello di Rasch
+:::
+
+::::
+
+
+\pause
+
+\centering
+\includegraphics[width=.10\linewidth]{img/psicostat.jpg}
+
+\large
+Parametrizzazione di tipo Rasch ottenuta con l'applicazione del modelli lineari a effetti misti
+
+
+## When?
+
+###
+
+\centering
+
+```{=latex}
+\scalebox{.60}{
+\begin{tikzpicture}[scale=1.2, thick]
+
+  % Asse con frecce alle estremità
+  \draw[->] (-5.5,0) -- (5.5,0);
+
+  % Etichette dei valori selezionati
+  \foreach \x in {-5,-3,-1,0,1,3,5}
+    \draw (\x,0) node[circle,draw,minimum size=0.8cm,inner sep=0pt, yshift=-1.5cm] {\x};
+
+  % Etichette testo
+  \node at (-6,0) {$-\infty$};
+  \node at (6,0) {$+\infty$};
+
+
+  % Optional: linee guida verticali
+  % \foreach \x in {-5,-3,-1,0,1,3,5}
+  %   \draw[dashed,gray] (\x,0.5) -- (\x,-0.5);
+
+\end{tikzpicture}
+}
+
+```
+
+
+:::: {.columns}
+
+::: {.column with="50%"}
+\centering
+
+Numeri piccoli: 
+
+Percepiti \color{latenti}a sinistra
+:::
+
+::: {.column with="50%"}
+\centering
+
+Numeri ampi: 
+
+Percepiti \color{manifeste}a destra
+:::
+
+::::
+
+
+### 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+\begin{center}
+Un \emph{campione} di numeri piccoli:
+
+$1, 2, 3, 4$
+\end{center}
+:::
+
+::: {.column width="50%"}
+\begin{center}
+Un \emph{campione} di numeri grandi:
+
+$6, 7, 8, 9$
+\end{center}
+:::
+:::
+
+Due condizioni 
+
+\centering
+
+La condizione "naturale" (*compatibile*)
+
+```{=latex}
+
+\centering
+\scalebox{.60}{
+\begin{tikzpicture}[scale=1.2, thick]
+
+  % Asse orizzontale
+  \draw[->] (-1,0) -- (10,0) node[right] {};
+
+  % Numeri sulla linea
+  \foreach \x in {1,2,...,9}
+    \draw (\x,0) circle (0.2) node[below=7pt] {\x};
+
+  % Frecce per SNARC effect
+  % Numeri piccoli -> sinistra
+  \foreach \x in {1,2,3,4}
+    \draw[->, red] (\x,0.3) -- ++(-0.5,0.5);
+
+  % Numeri grandi -> destra
+  \foreach \x in {6,7,8,9}
+    \draw[->, blue] (\x,0.3) -- ++(0.5,0.5);
+
+  % Etichette
+  \node[red] at (0.2,1.1) {Left response key};
+  \node[blue] at (9.5,1.1) {Right response key};
+\end{tikzpicture}
+}
+```
+
+. . . 
+
+La condizione "innaturale" (*incompatibile*)
+
+```{=latex}
+\centering
+\scalebox{.60}{
+\begin{tikzpicture}[scale=1.2, thick]
+
+  % Asse orizzontale
+  \draw[->] (-1,0) -- (10,0) node[right] {};
+
+  % Numeri sulla linea
+  \foreach \x in {1,2,...,9}
+    \draw (\x,0) circle (0.2) node[below=7pt] {\x};
+
+  % Frecce per SNARC effect
+  % Numeri piccoli -> sinistra
+  \foreach \x in {1,2,3,4}
+    \draw[->, blue] (\x,0.3) -- ++(-0.5,0.5);
+
+  % Numeri grandi -> destra
+  \foreach \x in {6,7,8,9}
+    \draw[->, red] (\x,0.3) -- ++(0.5,0.5);
+
+  % Etichette
+  \node[blue] at (0.2,1.1) {Right response key};
+  \node[red] at (9.5,1.1) {Left response key};
+
+\end{tikzpicture}
+}
+```
+
+
+###
+
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+\centering
+
+\textcolor{latenti}{Differenze a livewllo del campione}:
+
+Il senso di compatibile e incompatibile può essere definito a priori, *può non variare da persona a persona*
+
+(SNARC effect)
+
+:::
+
+::: {.column width="50%"}
+
+\centering
+
+\textcolor{manifeste}{Differenze Individuali}:
+
+Il senso di compatibile e incompatibile *può variare da persona a persona*
+
+(Implicit Association Test)
+
+:::
+
+::::
+
+# $\psi$
+
+### Il modello di Rasch
+
+\small
+
+$$P(x_{ps} = 1|\theta_p, b_s) = \dfrac{\exp(\theta_p - b_s)}{1+ \exp(\theta_p - b_s)}$$
+$\theta_p$: Livello del tratto latente della persona $p$ \footnotesize{Maggiore è il valore, più alta è l'abilità} \normalsize
+
+$b_s$: Potere "sfidante" dello stimolo $s$ \footnotesize{Maggiore è il valore, più alta è la difficoltà} \normalsize
+
+\vspace{-5mm}
+
+```{r}
+#| echo: false
+#| fig-align: center
+#| out-width: 50%
+
+
+IRT <- function(theta, a = 1, b = 0, c = 0,e = 1) {
+  y <- c + (e - c) * exp(a * (theta - b)) / (1 + exp(a * (theta - b)))
+  return(y)
+}
+theta = seq(-4,4, length.out = 1000)
+par(mar = c(5,7,4,2) + 0.1) 
+b = seq(-2.5, 2.5, length = 5)
+a = rep(1, length(b))
+
+my_colors <- RColorBrewer::brewer.pal(6, "Blues")[2:6]
+
+par(mar = c(5,7,4,2) + 0.1) 
+plot(theta, IRT(theta, b = b[1], a = a[1]),
+     cex.lab= 2, 
+     cex.axis =1, cex.main = 2,
+       xlab = expression(theta), ylab = expression(paste("P(", x[p][s],  "= 1|", theta[p], ", ", b[s], ")")), 
+       xlim = c(-4, 4), ylim = c(0, 1), 
+     type = "l", lwd = 3, 
+     col = my_colors[1])
+  
+segments(-7, 0.5, 
+         b[1], 0.5, 
+         col = "red", lty = 3, lwd = 3)
+segments(b[1], -0.5, 
+         b[1], 0.5, 
+         col = "red", lty = 3, lwd = 3)
+
+si = data.frame(stim1 = b[1], stim2 = b[2], stim3 = b[3], 
+                stim4 = b[4], stim5 = b[5])
+rownames(si) = "b"
+text(x= -2, y = 0.8, colnames(si)[1], col = my_colors[1], cex = 2)
+for ( i in 2:length(b)) {
+  lines(theta, IRT(theta, b=b[i], 
+                a = 1), 
+      lty = 1, lwd=3, col = my_colors[i])
+  segments(-7, 0.5, 
+         b[i], 0.5, 
+         col = "red", lty = 3, lwd = 3)
+segments(b[i], -0.5, 
+         b[i], 0.5, 
+         col = "red", lty = 3, lwd = 3)
+text(x= b[i] +.5, 
+     y = 0.8, colnames(si)[i], col = my_colors[i], cex = 2)
+
+}
+```
+
+
+
+
+## Parametrizzazione di tipo Rasch delle log-risposte
+
+### Il modello log-normale 
+
+$$E(t_{ps}| \tau_p, \delta_s) = \delta_s - \tau_p + \varepsilon$$
+
+
+$\tau_p$: La velocità della persona $p$ nello svolgere il compito \footnotesize{Maggiore è il valore, più $p$ è veloce} \normalsize
+
+$\delta_s$: La time intensity dello stimolo $s$ (ovvero il tempo che ogni stimoli richiede prima di ottenere una risposta) \footnotesize{Maggiore è il valore, maggiore è il tempo richiesto dallo stimolo $s$} \normalsize
+
+
+
+# $\Sigma$
+
+### Modello Generalizzato Lineare (GLM)
+
+Risposte dicotomiche 0 vs. 1
+
+:::: {.columns}
+::: {.column width="60%"}
+\includegraphics[width=\linewidth]{img/linkGLM.pdf}
+:::
+
+::: {.column width="40%"}
+\small
+Funzione logit $g$:
+
+$$g(\eta_{ps}) = log\left(\frac{\mu_{ps}}{1 - \mu_{ps}}\right)$$
+
+
+Funzione inversa del logit link: $g^{-1}$
+
+
+$$g^{-1} = \frac{\exp(\eta_{ps})}{1 + \exp(\eta_{ps})}$$
+:::
+::::
+
+
+
+
+### 
+
+:::: {.columns}
+
+:::{.column width="50%"}
+
+::: {.callout-note}
+## Rasch ($\psi$)
+
+\footnotesize
+
+$P(x_{ps} = 1) = \dfrac{\exp(\theta_p - b_s)}{1+ \exp(\theta_p - b_s)}$
+:::
+
+:::
+
+:::{.column width="50%"}
+::: {.callout-important}
+## GLM (inverse function) ($\Sigma$)
+\footnotesize
+
+$P(x_{ps} = 1) = \displaystyle \frac{\exp(\theta_p \, + \, b_s)}{1 + \exp(\theta_p \, + \, b_s)}$
+
+:::
+:::
+
+::::
+
+\pause
+
+:::{.callout-warning}
+
+## Interpetazione di $b_s$
+
+Maggiore è il valore di $b_s$, più lo stimolo è facile 
+
+:::
+
+###
+
+
+:::: {.columns}
+
+:::{.column width="50%"}
+
+
+::: {.callout-note}
+## Log-normal ($\psi$)
+
+\footnotesize
+
+$E(t_{ps}| \tau_p, \delta_s) = \delta_s - \tau_p + \varepsilon$
+:::
+:::
+
+:::{.column width="50%"}
+\footnotesize
+
+
+::: {.callout-important}
+## LM (Funzione di identità) ($Sigma$)
+
+$E(t_{ps}| \tau_p, \delta_s) = \delta_s + \tau_p + \varepsilon$
+:::
+
+:::
+
+::::
+
+:::{.callout-warning}
+
+## Interpetazione di $\tau_p$
+
+Maggiore è il valore di $\tau_p$, più la persona è lenta a rispondere
+
+:::
+
+
+
+
+
+
+# Fattori ed effetti random
+
+###
+
+In un modello lineare: 
+
+$$\eta = \mathbf{X}\beta$$
+
+$\mathbf{X}$: Model Matrix
+
+$\beta$: Coefficienti associati ai predittori specificati nella model matrix
+
+. . .
+
+Estensione per includere i fattori random:
+
+
+$$\eta = \mathbf{X}\beta + \color{blu}Zd$$
+
+\small
+
+$d$: Effetti random associati ai fattori random in $Z$ $\ldots$ Non sono parametri del modello! *Best Linear Unbiased Predictors* 
+
+$\Gamma$: Parametri stimati per i fattori random del modello (matrici di varianza-covarianza)
+
+## Strutture random
+
+### 
+
+\small 
+
+:::{.callout-note}
+
+## Maximal Model
+
+Considera tutte le possibili sorgenti di variabilità che ha senso aspettarsi data una determinata struttura dei dati
+
+Teoricamente, è il migliore
+:::
+
+
+\pause
+
+\begin{center}
+In pratica:
+\end{center}
+
+
+Meglio considerare i modelli che sono maggiormente utili dati gli obietivi della ricerca
+
+\pause
+* Obiettivo più comune: 
+   
+   Investigare i cambiamenti nella perfomance delle persone tra le condizioni associative
+
+\pause
+* Obiettivo meno comune: 
+
+   Investigare i cambiamenti nel funzionamento degli stimoli tra le condizioni associative
+
+### 
+
+| Indice               | Significato               | Variabile       |
+|---------------------|------------------------|----------------|
+| $p = 1, \ldots, P$  | Partecipante            | `respondents`  |
+| $s = 1, \ldots, S$  | Stimoloi              | `stimuli`      |
+| $c \in \{0,1\}$     | Condizione Associativa | `condition`    |
+| $i$                | Trial                 |                |
+
+:::: {.columns}
+
+:::{.column width="50%"}
+\centering
+
+Accuaratezze:
+
+
+Modelli lineari generalizzati a effetti misti (GLMM)
+
+$y = [0,1]$
+
+:::
+
+:::{.column width="50%"}
+\centering
+
+Log-tempi
+
+
+Modelli lineari a effetti misti (LMM)
+
+$y = (0, + \infty)$ (log-trasformati)
+
+\vspace{3mm}
+
+$\varepsilon \sim \mathcal{N}(0, \sigma^2)$
+:::
+
+::::
+
+
+## I modelli
+
+###
+
+\footnotesize
+
+\begin{center}
+Modello 1:
+
+$\displaystyle y_{i} = \spot[fill =blue!15]{\alpha + \beta_c X_c}  + \spot[fill=yellow!20]{\alpha_{p[i]} +  \alpha_{s[i]} + \varepsilon_{i}}$ 
+\end{center}
+
+con
+
+$\alpha_p \sim \mathcal{N}(0, \sigma_p^2)$ e 
+$\alpha_s \sim \mathcal{N}(0, \sigma_s^2)$.
+
+\begin{center}
+Modello 2: 
+
+$\displaystyle y_{i} = \spot[fill =blue!15]{\alpha + \beta_c X_c}  + \spot[fill=yellow!20]{ \alpha_{p[i]} +  \beta_{s[i]}c_{i} + \varepsilon_{i}}$ 
+\end{center}
+
+con $\alpha_p \sim \mathcal{N}(0, \sigma_p^2)$ e 
+$\beta_s \sim \mathcal{MVN}(0, \Sigma_{sc})$.
+
+\begin{center}
+Modello 3: 
+	
+$\displaystyle y_{i} = \spot[fill =blue!15]{\alpha + \beta_c X_c}  + \spot[fill=yellow!20]{\alpha_{s[i]} +  \beta_{p[i]}c_{i} + \varepsilon_{i}}$
+\end{center}
+
+con 
+
+$\alpha_s \sim \mathcal{N}(0, \sigma_s^2)$ e $\beta_p \sim \mathcal{MVN}(0, \Sigma_{pc})$.
+		
+
+### Modello 1
+
+\footnotesize
+
+
+::: {.callout-note}
+## Notazione
+$y = \beta_c X_c + \alpha_{p[i]} + \alpha_{s[i]}$
+:::
+
+::: {.callout-tip}
+## `lme4`
+
+```{r}
+#| eval: false
+#| echo: true
+
+y ~ 0 + condition + (1|stimuli) + (1|respondents)
+```
+
+:::
+
+
+::: {.callout-caution}
+## Parametrizzazione Rasch-like
+\vspace*{-5mm}
+```{r}
+library(knitr)
+kable(
+  data.frame(
+    row.names = c("partecipanti", "stimoli"),
+    GLMM = c("$\\theta_p$", "$b_s$"),
+    LMM  = c("$\\tau_p$", "$\\delta_s$")
+  ),
+  escape = FALSE,
+  col.names = c("GLMM", "LMM")
+)
+```
+
+:::
+
+### Modello 2
+
+\footnotesize
+
+
+::: {.callout-note}
+## Notatione
+$y = \beta_c X_c + \alpha_{p[i]} + \beta_{s[i]}c_i$
+:::
+
+::: {.callout-tip}
+## `lme4` 
+
+```{r}
+#| eval: false
+#| echo: true
+
+y ~ 0 + condition + (0+condition|stimuli) + (1|respondents)
+```
+
+:::
+
+
+::: {.callout-caution}
+## Parametrizzazione Rasch-like
+\vspace*{-5mm}
+```{r}
+library(knitr)
+kable(
+  data.frame(
+    row.names = c("partecipanti", "stimoli"),
+    GLMM = c("$\\theta_p$", "$b_{sc}$"),
+    LMM  = c("$\\tau_p$", "$\\delta_{sc}$")
+  ),
+  escape = FALSE,
+  col.names = c("GLMM", "LMM")
+)
+```
+
+:::
+
+### Modello 3
+
+\footnotesize
+
+
+::: {.callout-note}
+## Notazione
+$y = \beta_c X_c + \beta_{p[i]}c_i + \alpha_{s[i]}$
+:::
+
+::: {.callout-tip}
+## `lme4` 
+
+```{r}
+#| eval: false
+#| echo: true
+
+y ~ 0 + condition + (1|stimuli) + (0+condition|respondents)
+```
+
+:::
+
+
+::: {.callout-caution}
+## Parametrizzazione Rasch-like
+\vspace*{-5mm}
+```{r}
+library(knitr)
+kable(
+  data.frame(
+    row.names = c("partecipanti", "stimoli"),
+    GLMM = c("$\\theta_{pc}$", "$b_{s}$"),
+    LMM  = c("$\\tau_{pc}$", "$\\delta_{s}$")
+  ),
+  escape = FALSE,
+  col.names = c("GLMM", "LMM")
+)
+```
+
+:::
+
+### Summary 
+
+\footnotesize
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {.callout-note}
+## Models
+
+\centering
+
+Modello 1
+
+$$y = \beta_c X_c + \alpha_{p[i]} + \alpha_{s[i]}$$
+
+Modello 2
+
+$$y = \beta_c X_c + \alpha_{p[i]} + \beta_{s[i]}c_i$$
+
+Modello 3
+
+$$y = \beta_c X_c + \beta_{p[i]}c_i + \alpha_{s[i]}$$
+
+:::
+:::
+
+
+::: {.column width="50%"}
+::: {.callout-caution}
+
+## Parametrizations
+\footnotesize
+\begin{tabular}{lll}
+\toprule
+ & GLMM & LMM \\
+& \multicolumn{2}{c}{\textbf{Model 1}} \\
+\midrule
+respondents & $\theta_p$ & $\tau_p$ \\
+stimuli     & $b_s$      & $\delta_s$ \\
+\bottomrule
+& \multicolumn{2}{c}{\textbf{Model 2}} \\
+respondents & $\theta_p$ & $\tau_p$ \\
+stimuli     & $b_{sc}$   & $\delta_{sc}$ \\
+\bottomrule
+& \multicolumn{2}{c}{\textbf{Model 3}} \\
+respondents & $\theta_{pc}$ & $\tau_{pc}$ \\
+stimuli     & $b_s$         & $\delta_s$ \\
+\bottomrule
+\end{tabular}
+
+:::
+:::
+
+::::
+
+
+### All models are wrong...
+
+Il miglior modello viene trovato con model comparison, in particolare facendo riferimento all'Akaike's Information Criterion (AIC) e al Bayesian Iformation Criterion (BIC)
+
+Sono indici di entropia: Penalizzano la verosimiglianza del modello per il numero di parametri
+
+:::: {.columns}
+
+:::{.column width="50%"}
+$\text{AIC} = -2 \, \log(\mathcal{L}) + 2k$
+:::
+
+
+:::{.column width="50%"}
+$\text{BIC} = -2 \, \log(\mathcal{L}) + k \, \log(n)$
+:::
+
+::::
+
+###
+
+:::{.callout-important}
+## AIC, BIC, e complessità
+
+Il numero totale dei parametri è dato dalla somma dei parametri in $\beta$ e in $\Gamma$
+
+*NON* vengono contati i parametri in $d$
+:::
+
+I modelli 2 e 3 hanno la stessa complessità, ma si concentrano su aspetti differenti del processo di risposta
+
+
+Il modello scelto è il modello meno sbagliato  *dati i modelli che vengono considerati*: Non è il modello migliore in assoluto
+
+# Dati reali
+
+### The Implicit Association Test
+\begin{textblock*}{10cm}(0.5cm,1cm)
+{\includegraphics[width=\linewidth]{cokeIAT1.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(0.7cm,1.4cm)
+{\includegraphics<2->[width=\linewidth]{cokeIAT2.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(0.9cm,1.8cm)
+{\includegraphics<3->[width=\linewidth]{cokeIAT3.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(1.1cm,2.2cm)
+{\includegraphics<4->[width=\linewidth]{cokeIAT4.png}}
+\end{textblock*}
+\begin{textblock*}{10cm}(1.3cm,2.6cm)
+{\includegraphics<5->[width=\linewidth]{cokeIAT5.png}}
+\end{textblock*}
+	
+\vskip0pt plus 1filll
+	
+\onslide<2-2> Response key: E
+\onslide<3-3> Response key: I
+\onslide<4-4> Response key: I
+\onslide<5-5> Response key: E
+
+
+
+
+### Get set
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("lme4") # <1>
+install.packages("ggplot2") # <2>
+library(lme4) # <3>
+library(ggplot2) # <3>
+```
+
+1. Installa il pacchetto per fittare i modelli lineari a effetti misti 
+2. Installa il pacchetto i grafici
+3. Rende disponibile i due paccheti
+
+
+### I dati
+
+\small
+
+```{r}
+#| echo: true
+
+data = read.csv("data/example-data.csv",
+                header = TRUE, sep =",")
+head(data)
+```
+
+
+###
+
+Numero di trial $\times$ condizione $\times$ soggetto:
+
+```{r out.lines=8}
+#| echo: true
+table(data$respondent, data$condition)
+```
+
+
+
+## GLMMs per le accuaratezze
+
+###
+
+\vspace*{-5mm}
+
+\footnotesize
+
+Modello 1: $y_{i} = logit^{-1}(\alpha + \beta_c X_c  + \alpha_{p[i]} +  \alpha_{s[i]})$
+
+\scriptsize
+```{r}
+#| echo: true
+accuracy1 = glmer(accuracy ~ 0 + condition + (1|stimuli) + (1|respondent),
+                  data = data,
+                  family = "binomial")
+```
+\footnotesize
+Modello 2: $y_{i} = logit^{-1}(\alpha + \beta_c X_c  +\alpha_{p[i]} +  \beta_{s[i]}c_{i})$
+\scriptsize
+```{r}
+#| echo: true
+accuracy2 = glmer(accuracy ~ 0 + condition + (0 + condition|stimuli) +
+                    (1|respondent),
+                  data = data,
+                  family = "binomial")
+```
+
+\footnotesize
+Modello 3: $y_{i} = logit^{-1}(\alpha + \beta_c X_c  + \alpha_{s[i]} +  \beta_{p[i]}c_{i})$
+\scriptsize
+
+```{r}
+#| echo: true
+accuracy3 = glmer(accuracy ~ 0 + condition + (1|stimuli) +
+                    (0 + condition|respondent),
+                  data = data,
+                  family = "binomial")
+```
+
+
+## LMMs  per i log-tempi
+
+###
+
+\vspace*{-5mm}
+
+\footnotesize
+
+Modello 1: $y_{i} = \alpha + \beta_c X_c  + \alpha_{p[i]} +  \alpha_{s[i]} + \varepsilon_i$
+
+\scriptsize
+
+```{r}
+#| echo: true
+logtime1 = lmer(log(latency) ~ 0 + condition + (1|stimuli) + (1|respondent),
+                  data = data,
+                  REML = FALSE)
+```
+
+\footnotesize
+Modello 2: $y_{i} = \alpha + \beta_c X_c  +\alpha_{p[i]} +  \beta_{s[i]}c_{i} + \varepsilon_i$
+\scriptsize
+```{r}
+#| echo: true
+logtime2 = lmer(log(latency) ~ 0 + condition + (0 + condition|stimuli) +
+                    (1|respondent),
+                  data = data,
+                  REML = FALSE)
+```
+
+\footnotesize
+Modello 3: $y_{i} = \alpha + \beta_c X_c  + \alpha_{s[i]} +  \beta_{p[i]}c_{i} + \varepsilon_i$
+\scriptsize
+```{r}
+#| echo: true
+logtime3 = lmer(log(latency) ~ 0 + condition + (1|stimuli) +
+                    (0 + condition|respondent),
+                  data = data,
+                  REML = FALSE)
+```
+
+## Model comparison
+
+### GLMMs
+
+\footnotesize
+:::{.callout-warning}
+## Attenzione!
+
+La funzione `anova()` viene usata solo perché è comoda, ma non si può fare realmente ANOVA tra il modello 2 e il modello 3
+:::
+
+\scriptsize
+```{r}
+#| echo: true
+
+anova(accuracy1, accuracy2, accuracy3)
+```
+
+### LMMs
+
+\footnotesize
+:::{.callout-warning}
+## Attenzione!
+
+La funzione `anova()` viene usata solo perché è comoda, ma non si può fare realmente ANOVA tra il modello 2 e il modello 3
+:::
+
+\scriptsize
+```{r}
+#| echo: true
+
+anova(logtime1, logtime2, logtime3)
+```
+
+### I modelli utili
+
+:::: {.columns}
+
+:::{.column width="50%"}
+\centering
+
+GLMMs
+
+*Modello 2*
+
+$\theta_p$
+
+$b_{\text{WGBB}}$ e $b_{\text{BGWB}}$
+
+\vspace{1.5mm}
+\flushleft
+\small
+
+L'effetto IAT sembra essere maggiormente dovuto alle variazioni nel *funzionamento degli stimoli* tra le condizioni, mentre la performance dei soggetti sembra essere non alterata
+:::
+
+:::{.column width="50%"}
+\centering
+LMMs
+
+*Model 3*
+
+$\tau_{\text{WGBB}}$ e $\tau_{\text{BGWB}}$
+
+$\delta_s$
+
+\vspace{1.5mm}
+\flushleft
+\small
+
+L'effetto IAT sembra maggiormente dovuto alle variazioni nella *performance dei soggetti* tra le condizioni, mentre il funzionamento degli stimoli sembra non essere affetto
+
+:::
+::::
+
+
+I risultati andrebbero interpretati insieme!
+
+
+## Rasch-like estimates
+
+### $\theta_p$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+parole <- c("annoying", "bf14", "bf23", "bf56", "bm14", "bm23", "bm56", "evil",
+            "failure", "glory", "good", "happiness", "hate", "horrible", "joy",
+            "laughter", "love", "pain", "peace", "pleasure", "terrible", "wf2",
+            "wf3", "wf6", "wicked", "wm1", "wm4", "wm6")
+
+# Categorie predefinite
+negative <- c("annoying", "evil", "failure", "hate", "horrible", "pain", "terrible", "wicked")
+positive <- c("glory", "good", "happiness", "joy", "laughter", "love", "peace", "pleasure")
+
+# Funzione di categorizzazione
+categorizza <- function(x) {
+  if (x %in% negative) {
+    return("negative")
+  } else if (x %in% positive) {
+    return("positive")
+  } else if (grepl("^wf|^wm", x)) {
+    return("wp")
+  } else if (grepl("^bf|^bm", x)) {
+    return("bp")
+  } else {
+    return("altro")  # per sicurezza
+  }
+}
+
+# Applichiamo la funzione a tutte le parole
+categorie <- sapply(parole, categorizza)
+
+# Creiamo un data frame per vedere il risultato
+cat = data.frame(stimuli = parole, category = categorie)
+ab_iat =  as.data.frame(ranef(accuracy2,   # BLUP of the stimuli
+                                        condVar = TRUE)) 
+ab_iatSingles = ab_iat[ab_iat$grpvar %in% "respondent", c("grpvar", "condval", "condsd")]
+
+ab_iat = data.frame(sbj = rownames(coef(accuracy2)$respondent),
+                    theta = coef(accuracy2)$respondent[,1]) 
+graph_theta_iat = ggplot(ab_iat, 
+                         aes(x = theta)) + 
+  geom_density() 
+# the code from line 331 to line 339 results in the plot represented in Figure 10a in the manuscript
+graph_theta_iat + # object containing the starting plot
+  geom_density(fill = "springgreen4", # change the color of the filling of the density distribution
+               alpha = .50) + 
+  theme_light() + # define the theme of the plot
+  theme(legend.position =  "none", # remove the legend
+        axis.title.y = element_blank(), # remove the title of the y-axis
+        axis.title.x = element_text(size = 30, face = "bold"), # increase the size of x-axis title and set it to bold
+        axis.text = element_text(size = 26, face = "bold")) + # increase the size of x-axis text and set it to bold
+  xlab(expression(theta))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+ab_iatSingles$grpvar = paste(ab_iatSingles$grpvar, 1:nrow(ab_iatSingles), sep = "_")
+ggplot(ab_iatSingles, 
+       aes(y = reorder(grpvar, condval), 
+           x = condval, color = grpvar)) + geom_point() + 
+  ylab("Respondents")  +theme_light() + 
+  theme(legend.position =  "none",
+        axis.text.y = element_blank(),
+        axis.title = element_text(size = 24), 
+        axis.text.x = element_text(size = 22)) +  geom_errorbarh(aes(xmin = condval - 1.96*condsd, xmax= condval + 1.96*condsd)) +
+  xlab(expression(theta)) + scale_fill_manual(values = rainbow(65))
+```
+:::
+
+::::
+
+
+### Codice - Distribuzione abilità 
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+ab_iat =  as.data.frame(ranef(accuracy2,   # BLUP of the stimuli
+                              condVar = TRUE)) 
+ab_iatSingles = ab_iat[ab_iat$grpvar %in% "respondent", c("grpvar", "condval", "condsd")]
+
+ab_iat = data.frame(sbj = rownames(coef(accuracy2)$respondent),
+                    theta = coef(accuracy2)$respondent[,1]) 
+# density ability ----
+ggplot(ab_iat, 
+                         aes(x = theta)) + 
+  geom_density()  + # object containing the starting plot
+  geom_density(fill = "springgreen4", # change the color of the filling of the density distribution
+               alpha = .50) + 
+  theme_light() + # define the theme of the plot
+  theme(legend.position =  "none", # remove the legend
+        axis.title.y = element_blank(), # remove the title of the y-axis
+        axis.title.x = element_text(size = 30, face = "bold"), # increase the size of x-axis title and set it to bold
+        axis.text = element_text(size = 26, face = "bold")) + # increase the size of x-axis text and set it to bold
+  xlab(expression(theta))
+```
+
+### Codice - Differenze abituali abilità
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+ab_iatSingles$grpvar = paste(ab_iatSingles$grpvar, 1:nrow(ab_iatSingles), sep = "_")
+ggplot(ab_iatSingles, 
+       aes(y = reorder(grpvar, condval), 
+           x = condval, color = grpvar)) + geom_point() + 
+  ylab("Respondents")  +theme_light() + 
+  theme(legend.position =  "none",
+        axis.text.y = element_blank(),
+        axis.title = element_text(size = 24), 
+        axis.text.x = element_text(size = 22)) +  geom_errorbarh(aes(xmin = condval - 1.96*condsd, xmax= condval + 1.96*condsd)) +
+  xlab(expression(theta)) + scale_fill_manual(values = rainbow(65))
+
+```
+
+
+
+### $b_{\text{WGBB}}$ e  $b_{\text{WGBB}}$
+
+
+```{r}
+#| out-width: 70%
+#| fig-align: center
+blup_easiness_iat = as.data.frame(ranef(accuracy2,   
+                                        condVar = TRUE)) 
+fixef_accuracy_iat = data.frame(term = names(fixef(accuracy2)), 
+                      est = (fixef(accuracy2))) # assign the 
+easiness_iat = merge(blup_easiness_iat, fixef_accuracy_iat)
+# change the column names ----
+colnames(easiness_iat) = c("Condition", "grpvar", "stimuli",
+                   "blup", "se", "fix.est")
+easiness_iat$stimuli = as.character(easiness_iat$stimuli)
+easiness_iat$b = with(easiness_iat, fix.est + blup)
+easiness_iat$categoria <- sapply(easiness_iat$stimuli, categorizza)
+
+# Ordina per categoria
+cat_levels <- c("negative", "positive", "bp", "wp")
+easiness_iat$categoria <- factor(easiness_iat$categoria, levels = cat_levels)
+easiness_iat <- easiness_iat[order(easiness_iat$categoria, easiness_iat$stimuli), ]
+
+# Stimuli come fattore ordinato
+easiness_iat$stimuli <- factor(easiness_iat$stimuli, levels = unique(easiness_iat$stimuli))
+graph_b_ci = ggplot(easiness_iat, # dataset with the easiness estimates
+                    aes(x = b, # easiness estimates on the x-axis
+                        y = stimuli, # labels of the stimuli on the y axis
+                        color = Condition)) + # change the color according to the condition
+  geom_point() + # draw points to represent the easiness of each stimulus
+  geom_errorbarh(aes(xmin = b - 1.96*se, # draw the error bars to represent the confidence intervals  (CI)
+                     xmax= b + 1.96*se)) 
+
+ggplot(easiness_iat, 
+       aes(x = b,fill = Condition)) + geom_density(alpha =.50) + 
+  xlim(-1, 4) + 
+  scale_fill_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) + 
+  theme_light() + 
+  theme(legend.position = "inside",
+        legend.position.inside = c(.2, .6),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text = element_text(size = 24), 
+        legend.text = element_text(size = 24))
+
+```
+
+### Codice distribuzioni facilità 
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+
+ggplot(easiness_iat, 
+       aes(x = b,fill = Condition)) + geom_density(alpha =.50) + 
+  xlim(-1, 4) + 
+  scale_fill_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) + 
+  theme_light() + 
+  theme(legend.position = "inside",
+        legend.position.inside = c(.2, .6),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text = element_text(size = 24), 
+        legend.text = element_text(size = 24))
+```
+
+
+### 
+
+```{r}
+#| fig-align: center
+
+graph_b_ci +  # object containing the starting plot
+  geom_point(size = 2) + # increase the size of the points
+  geom_errorbarh(aes(xmin = b - 1.96*se, xmax= b + 1.96*se), 
+                 linewidth=.95) + 
+  theme_light() +  
+  theme(legend.position = "none", 
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text = element_text(size = 18, color=c(rep("darkgreen", 8), rep("firebrick4", 8),
+                                         rep("tan3", 6), 
+                                        rep("aquamarine3", 6) ))) + 
+  scale_color_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) 
+
+```
+
+### Codice stime facilità 
+
+\footnotesize
+```{r}
+#| echo: true
+#| eval: false
+easiness_iat$stimuli = as.character(easiness_iat$stimuli)
+easiness_iat$b = with(easiness_iat, fix.est + blup)
+easiness_iat$categoria <- sapply(easiness_iat$stimuli, categorizza)
+cat_levels <- c("negative", "positive", "bp", "wp")
+easiness_iat$categoria <- factor(easiness_iat$categoria, levels = cat_levels)
+easiness_iat <- easiness_iat[order(easiness_iat$categoria, easiness_iat$stimuli), ]
+easiness_iat$stimuli <- factor(easiness_iat$stimuli, levels = unique(easiness_iat$stimuli))
+# graphs stimuli ----
+graph_b_ci = ggplot(easiness_iat, # dataset with the easiness estimates
+                    aes(x = b, # easiness estimates on the x-axis
+                        y = stimuli, # labels of the stimuli on the y axis
+                        color = Condition)) + # change the color according to the condition
+  geom_point() + # draw points to represent the easiness of each stimulus
+  geom_errorbarh(aes(xmin = b - 1.96*se, # draw the error bars to represent the confidence intervals  (CI)
+                     xmax= b + 1.96*se)) 
+```
+
+
+## Log-normal estimates
+
+### $\tau_{\text{WGBB}}$ e $\tau_{\text{BGWB}}$
+
+```{r}
+#| out-width: 70%
+#| fig-align: center
+speed = as.data.frame(ranef(logtime3), condvar= TRUE)
+fixef_speed = data.frame(term = names(fixef(logtime3)), # assign the labels of the conditions to the term column
+                      est = (fixef(logtime3))) # assign the estimates of the fixed effects to the est column
+# merge together the fixed effects and stimuli BLUP with their variances
+speed = merge(speed, fixef_speed)
+speed$tau = speed$condval + speed$est
+
+ggplot(speed, 
+       (aes(x = tau, fill  = term))) + geom_density(alpha = .5)  + 
+  theme_light()+
+  scale_fill_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) + 
+  xlab(expression(tau)) +theme(legend.position = "inside",
+        legend.position.inside = c(.8, .8),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text = element_text(size = 24), 
+        legend.text = element_text(size = 24))
+
+```
+
+
+### Codice distribuzioni velocità per condizione
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+
+speed = as.data.frame(ranef(logtime3), condvar= TRUE)
+fixef_speed = data.frame(term = names(fixef(logtime3)), # assign the labels of the conditions to the term column
+                         est = (fixef(logtime3))) # assign the estimates of the fixed effects to the est column
+# merge together the fixed effects and stimuli BLUP with their variances
+speed = merge(speed, fixef_speed)
+speed$tau = speed$condval + speed$est
+# graph density ----
+ggplot(speed, 
+       (aes(x = tau, fill  = term))) + geom_density(alpha = .5)  + 
+  theme_light()+
+  scale_fill_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) + 
+  xlab(expression(tau)) +theme(legend.position = "inside",
+                               legend.position.inside = c(.8, .8),
+                               legend.title = element_blank(),
+                               axis.title.x = element_text(size = 24), 
+                               axis.title.y = element_blank(), 
+                               axis.text = element_text(size = 24), 
+                               legend.text = element_text(size = 24))
+
+```
+
+
+### 
+
+```{r}
+#| out-width: 80%
+#| fig-align: center
+ggplot(speed, 
+       (aes(x = tau, y = grp, color  = term))) + geom_point()  + 
+  theme_light()+
+  scale_color_manual(values = c("royalblue4", "gold"), 
+                    labels = c("WBBG", "WGBB")) + 
+  xlab(expression(tau)) +theme(legend.position = "inside",
+        legend.position.inside = c(.8, .18),
+        legend.title = element_blank(),
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text.x = element_text(size = 24), 
+        axis.text.y = element_blank(),
+        legend.text = element_text(size = 24)) + 
+  geom_errorbar(aes(xmin = tau - 1.96*condsd, xmax = tau + 1.96*condsd), linewidth=.95)
+
+```
+
+### Codice differenze individuali velocità
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+
+ggplot(speed, 
+       (aes(x = tau, y = grp, color  = term))) + geom_point()  + 
+  theme_light()+
+  scale_color_manual(values = c("royalblue4", "gold"), 
+                     labels = c("WBBG", "WGBB")) + 
+  xlab(expression(tau)) +theme(legend.position = "inside",
+                               legend.position.inside = c(.8, .18),
+                               legend.title = element_blank(),
+                               axis.title.x = element_text(size = 24), 
+                               axis.title.y = element_blank(), 
+                               axis.text.x = element_text(size = 24), 
+                               axis.text.y = element_blank(),
+                               legend.text = element_text(size = 24)) + 
+  geom_errorbar(aes(xmin = tau - 1.96*condsd, xmax = tau + 1.96*condsd), linewidth=.95)
+
+```
+
+
+### $\delta_s$
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+intensity = as.data.frame(ranef(logtime3), condvar = TRUE)
+intensity = intensity[intensity$grpvar %in% "stimuli", ]
+colnames(intensity)[3] = "stimuli"
+intensity$categoria <- sapply(intensity$stimuli, categorizza)
+cat_levels <- c("negative", "positive", "bp", "wp")
+intensity$categoria <- factor(intensity$categoria, levels = cat_levels)
+intensity <- intensity[order(intensity$categoria, intensity$stimuli), ]
+
+# Stimuli come fattore ordinato
+intensity$stimuli <- factor(intensity$stimuli, levels = unique(intensity$stimuli))
+
+ggplot(intensity, 
+       aes(x = condval)) + geom_density(fill = "orchid", alpha =.5) + xlim(-.35, .35) + theme_light() + 
+  theme_light() + # define the theme of the plot
+  theme(legend.position =  "none", # remove the legend
+        axis.title.y = element_blank(), # remove the title of the y-axis
+        axis.title.x = element_text(size = 30, face = "bold"), # increase the size of x-axis title and set it to bold
+        axis.text = element_text(size = 26, face = "bold")) + # increase the size of x-axis text and set it to bold
+  xlab(expression(delta))
+```
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+
+
+ggplot(intensity, 
+       aes(x = condval, y = stimuli, col = categoria)) + geom_point() + # increase the size of the points
+  geom_errorbarh(aes(xmin = condval - 1.96*condsd, 
+                     xmax= condval + 1.96*condsd)) + 
+  theme_light() +  scale_color_manual(values = c("darkgreen", "firebrick4", "tan3", "aquamarine3")) + xlab(expression(delta)) + 
+  theme(legend.position = "none", 
+        axis.title.x = element_text(size = 24), 
+        axis.title.y = element_blank(), 
+        axis.text.x = element_blank(),
+        axis.text.y = element_text(size = 18, color=c(rep("darkgreen", 8), rep("firebrick4", 8),
+                                         rep("tan3", 6), 
+                                        rep("aquamarine3", 6) ))) 
+```
+:::
+::::
+
+
+### Codice parametri time intensity
+
+\footnotesize
+
+```{r}
+#| echo: true
+#| eval: false
+
+intensity = as.data.frame(ranef(logtime3), condvar = TRUE)
+intensity = intensity[intensity$grpvar %in% "stimuli", ]
+colnames(intensity)[3] = "stimuli"
+intensity$categoria <- sapply(intensity$stimuli, categorizza)
+cat_levels <- c("negative", "positive", "bp", "wp")
+intensity$categoria <- factor(intensity$categoria, levels = cat_levels)
+intensity <- intensity[order(intensity$categoria, intensity$stimuli), ]
+
+intensity$stimuli <- factor(intensity$stimuli, levels = unique(intensity$stimuli))
+
+ggplot(intensity, 
+       aes(x = condval, y = stimuli, col = categoria)) + geom_point() + # increase the size of the points
+  geom_errorbarh(aes(xmin = condval - 1.96*condsd, 
+                     xmax= condval + 1.96*condsd)) + 
+  theme_light()
+```
+
+
+### 
+
+\centering
+
+```{r}
+#| out-width: 80%
+knitr::include_graphics("img/psymeth.png")
+```
+
+[https://doi.org/10.1037/met0000708](https://doi.org/10.1037/met0000708)
+
+
+
+

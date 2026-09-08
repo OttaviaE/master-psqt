@@ -1,0 +1,144 @@
+\documentclass[aspectratio=149, xcolor=table]{beamer}
+\usetheme{Montpellier}
+\usefonttheme{serif}
+\usecolortheme{dove}
+\useinnertheme{rounded}
+\setbeamersize{text margin left=5mm,text margin right=10mm}
+\usefonttheme{serif}
+\usepackage{graphicx}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage[absolute,overlay]{textpos} 
+\usepackage{xcolor}
+\usepackage{multicol}
+\definecolor{myGreen}{RGB}{54, 114, 89}
+\definecolor{unipd}{RGB}{155, 0, 20}
+\definecolor{sbj1}{HTML}{77AC30}
+\definecolor{sbj2}{HTML}{EDB120}
+\definecolor{sbj3}{HTML}{0072BD}
+\definecolor{sbj4}{HTML}{1F78B4}
+\definecolor{sbj5}{HTML}{33A02C}
+\definecolor{sbj6}{HTML}{E31A1C}
+% Per il tema Montpellier
+%\setbeamercolor{separation line}{bg=myGreen!20}
+\setbeamercolor{separation line}{bg=black!20}
+%\setbeamercolor{title in head/foot}{bg=white, fg=myGreen}
+\setbeamercolor{title in head/foot}{bg=white, fg=black}
+%\setbeamercolor{section in head/foot}{bg=white, fg=myGreen}
+%\setbeamercolor{subsection in head/foot}{bg=white, fg=myGreen}
+%\setbeamercolor{background canvas}{bg=white}
+%\setbeamercolor{title}{fg=myGreen}
+%\setbeamercolor{item}{fg =myGreen}
+%\setbeamercolor{frametitle}{fg = myGreen}
+%\setbeamercolor{section in toc}{fg=myGreen!80}
+%\setbeamercolor{subsection in toc}{fg=black}
+\setbeamerfont{section in toc}{series=\bfseries,size=\normalsize}
+\setbeamerfont{frametitle}{series=\bfseries}
+%\setbeamerfont{title}{family=\scshape}
+%\setbeamercolor{frametitle}{fg=unipd}
+%\setbeamercolor{section in head/foot}{bg=unipd, fg=white}
+%\setbeamercolor{subsection in head/foot}{fg=unipd}
+%\setbeamercolor{author in head/foot}{bg=unipd, fg=white}
+%\setbeamercolor{title in head/foot}{fg=unipd}
+%\setbeamercolor{date in head/foot}{fg=unipd}
+
+% definisce gli elementi da mettere sopra la figura 
+% rectangles on figures 
+\newcommand{\imagenode}[2][1]% [scale], filename
+{   \node[above right,inner sep=0] (myimage) {\includegraphics[scale=#1]{#2}};
+	\path (myimage.north east);
+	\pgfgetlastxy{\myimagex}{\myimagey}
+	\pgfmathsetmacro{\myimagewidth}{\myimagex/28.453}
+	\pgfmathsetmacro{\myimageheight}{\myimagey/28.453}
+}
+\newcommand{\imagegrid}[4][help lines]% [options], steps, font, precision
+{   \pgfkeys{/pgf/number format/.cd,fixed,precision=#4}
+	\foreach \x in {0,...,#2}
+	{   \draw[#1] (\x/#2*\myimagewidth,\myimageheight) -- (\x/#2*\myimagewidth,0) node[below] {#3\pgfmathparse{\x/#2}\pgfmathprintnumber{\pgfmathresult}};
+		\draw[#1] (\myimagewidth,\x/#2*\myimageheight) -- (0,\x/#2*\myimageheight) node[left] {#3\pgfmathparse{\x/#2}\pgfmathprintnumber{\pgfmathresult}};
+	}
+}
+
+\newcommand{\highlightbox}[8][densely dashed,thick]% [options], left, low, right, up, node options, node text, overlay spec
+{   \only<#8>{\draw[#1] (#2*\myimagewidth, #3*\myimageheight) rectangle node[#6] {#7} (#4*\myimagewidth, #5*\myimageheight);}
+}
+
+\newcommand{\highlighttext}[8][densely dashed,thick]% [options], left, low, right, up, node options, node text, overlay spec
+{   \only<#8>{\path[#1] (#2*\myimagewidth, #3*\myimageheight) rectangle node[#6] {#7} (#4*\myimagewidth, #5*\myimageheight);}
+}
+
+% tikz per la cfa 
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{latent} = [ellipse, minimum width=2.5cm, minimum height=2cm,text centered, draw=black]
+\tikzstyle{item} = [rectangle, rounded corners, minimum width=0.5cm, minimum height=1cm, text width =1.5cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% allegedly, il codice che viene dopo permette di cambiare colore alle celle 
+
+\makeatletter
+\def\rowcolor{\noalign{\ifnum0=`}\fi\bmr@rowcolor}
+\newcommand<>{\bmr@rowcolor}{%
+	\alt#1%
+	{\global\let\CT@do@color\CT@@do@color\@ifnextchar[\CT@rowa\CT@rowb}% 
+	{\ifnum0=`{\fi}\@gooble@rowcolor}% 
+}
+
+\newcommand{\@gooble@rowcolor}[2][]{\@gooble@rowcolor@}
+\newcommand{\@gooble@rowcolor@}[1][]{\@gooble@rowcolor@@}
+\newcommand{\@gooble@rowcolor@@}[1][]{\ignorespaces}
+\makeatother
+
+
+
+\makeatletter
+\def\cellcolor{{\ifnum0=`}\fi\bmr@cellcolor}
+\newcommand<>{\bmr@cellcolor}{%
+	\alt#1%
+	{\global\let\CT@do@color\CT@@do@color\@ifnextchar[\CT@rowa\CT@rowb}% 
+	{\ifnum0=`{\fi}\@gooble@cellcolor}% 
+}
+
+\newcommand{\@gooble@cellcolor}[2][]{\@gooble@cellcolor@}
+\newcommand{\@gooble@cellcolor@}[1][]{\@gooble@cellcolor@@}
+\newcommand{\@gooble@cellcolor@@}[1][]{\ignorespaces}
+\makeatother
+
+\AtBeginSection[]
+{
+	\begin{frame}
+		\tableofcontents[currentsection, currentsubsection]
+	\end{frame}
+}
+
+\AtBeginSubsection[]
+{
+	\begin{frame}
+		\tableofcontents[currentsection, currentsubsection]
+	\end{frame}
+}
+
+\title{So simple, yet so effective}
+\author{Ottavia M. Epifania \& Friends}
+\begin{document}
+\begin{frame}[plain]
+    \maketitle
+\end{frame}
+\begin{frame}
+    \frametitle{Frame Title}
+\end{frame}
+
+\begin{frame}
+	Parti co l'esempio dove ci sono jane and john doe che devono fare lo snarc, presento gli stimoli e il compito 
+	
+	per presentare il cmpito: lo stimolo 2,4,6,7,9 viene presentato in una condizione detta compatibile, jane deve dire se è un numero grande o piccolo premendo il tasto sul pc 
+	
+	stessa cosa ma nella condizione incompatibile 
+\end{frame}
+
+\begin{frame}
+	La figurina della struttura crossed
+\end{frame}
+\end{document}

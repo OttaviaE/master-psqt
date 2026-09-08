@@ -1,0 +1,384 @@
+---
+title: "Misurazione Implicita in Psicologia:"
+subtitle: "L'analisi classica dei dati IAT"
+author: "Ottavia M. Epifania"
+format:
+  beamer:
+    slide-level: 3
+    theme: Montpellier
+    colortheme: dove
+    innertheme: rounded
+    navigation: horizontal
+    highlight-style: tango
+    classoption: compress, aspectratio=149
+header-includes:
+    # - \usetheme[compressed]{Singapore}
+    - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
+    - \AtBeginDocument{\institute[]{Master di II livello in Psicologia quantitativa}}
+    - \AtBeginSubsection{}
+    - \AtBeginDocument{\date[]{11 Settembre 2026}}
+    - \usecolortheme{dove}
+    - \useinnertheme{rounded}
+    - \useoutertheme{miniframes}
+    - \usepackage{graphicx} 
+    - \usepackage{setspace}
+    - \usepackage{tabularx}
+    - \usepackage{tikzsymbols}
+    - \usepackage{subcaption}
+    - \usepackage{tikz}
+    - \usetikzlibrary{arrows.meta,positioning}
+    - \usepackage{multirow}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{spot}
+    - \usepackage{tabularx}
+    - \usepackage[absolute,overlay]{textpos}
+    - \usepackage{booktabs}
+    - \setbeamertemplate{navigation symbols}{}
+    - \newcommand\Factor{1.2}
+    - \setbeamerfont{subtitle}{size=\large, series=\bfseries}
+    - \setbeamercolor{frametitle}{bg=background}
+    - \setbeamertemplate{frametitle}{\color{template}\small \bfseries\insertframetitle\par\vskip-6pt\hrulefill}
+    - \setbeamertemplate{navigation symbols}[default]
+    - \definecolor{template}{RGB}{158, 158, 158}
+    - \definecolor{latenti}{RGB}{54, 114, 89}
+    - \definecolor{manifeste}{RGB}{179, 7, 27}
+    - \definecolor{background}{RGB}{251, 251, 251}
+    - \definecolor{highlight}{RGB}{18, 10, 143}
+    - \definecolor{giallo}{RGB}{204 204 204}
+    - \definecolor{blu}{RGB}{177 11 37}
+    - \definecolor{orangered2}{RGB}{238,64,0}
+    - \definecolor{typical}{RGB}{8, 69, 148}
+    - \definecolor{springgreen}{RGB}{0,205,102}
+    - \setbeamercolor{frametitle}{fg=blu, bg = white}
+    - \setbeamercolor{item}{fg=giallo}
+    - \setbeamercolor{caption name}{fg=blu}
+    - \setbeamercolor{section name}{fg=white}
+    - \setbeamercolor{subsection name}{fg=white}
+    - \setbeamersize{text margin left=3mm,text margin right=3mm} 
+    - \def\tikzoverlay{\tikz[remember picture, overlay]\node[every overlay node]}
+    - \definecolor{person}{RGB}{33, 113, 181}
+    - \definecolor{question}{RGB}{181, 102, 33}
+    - \newcommand*{\sbj}[1]{\textcolor{person}{#1}}
+    - \newcommand*{\colit}[1]{\textcolor{question}{#1}}
+    - \newcommand*{\high}[1]{\textcolor{highlight}{#1}}
+editor_options: 
+  chunk_output_type: console
+execute: 
+  echo: true
+  eval: true
+---
+
+```{r setup, include=FALSE}
+hook_output <- knitr::knit_hooks$get("output")
+
+knitr::knit_hooks$set(output = function(x, options) {
+ if (!is.null(n <- options$out.lines)) {
+ x <- xfun::split_lines(x)
+ if (length(x) > n) {
+ # truncate the output
+ x <- c(head(x, n), "....\n")
+ }
+ x <- paste(x, collapse = "\n")
+ }
+ hook_output(x, options)
+ })
+library(ggplot2)
+library(implicitMeasures)
+```
+
+
+
+
+# Implicit Association Test
+
+###
+
+\small
+
+
+\begin{block}{12 stimoli target}
+\begin{columns}
+\column{.50\linewidth}
+\centering
+White people faces
+\includegraphics[width=\linewidth]{img/white.png}
+\column{.50\linewidth}
+\centering
+Black people faces
+\includegraphics[width=\linewidth]{img/black.png}
+\end{columns}
+\end{block}
+
+\begin{block}{16 stimoli attributo}
+
+\begin{columns}[T]
+\begin{column}{.50\linewidth}
+\begin{center}
+\color{blue}Attributi positivi
+\end{center}
+Good, laughter, pleasure, glory, peace, happy, joy, love
+\end{column}
+
+\begin{column}{.50\linewidth}
+\begin{center}
+\color{alert}Attributi negativi
+\end{center}
+
+Evil, bad, horrible, terrible, nasty, pain, failure, hate
+\end{column}
+\end{columns}
+\end{block}
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Condizione White-Good/Black-Bad (WGBB)
+:::
+
+::: {.column width="50%"}
+Condizione Black-Good/White-Bad (WGBB)
+:::
+
+::::
+
+
+
+## Scoring
+
+
+### Person-level scores
+
+
+$$s_p = \dfrac{\bar{X}_{p,\text{comp}} - \bar{X}_{p,\text{inc}}}{sd_{\text{pooled}}}$$
+
+\begin{table}[th!]
+\begin{tabular}{llll}
+				\hline
+				\emph{D score} & Risposte errate & Risposte troppo veloci\\\hline
+				\emph{D1} & Built-in correction & No \\
+				\emph{D2} & Built-in correction & Eliminare trials $<$ 400 \emph{ms} \\
+				\emph{D3} & Mean (correct responses) + 2\emph{sd} & No\\
+				\emph{D4} & Mean (correct responses) + 600 \emph{ms} & No \\
+				\emph{D5} & Mean (correct responses) + 2\emph{sd} & Eliminare trials $<$ 400 \emph{ms}\\
+				\emph{D6} & Mean (correct responses) + 600 \emph{ms} & Eliminare trials $<$ 400 \emph{ms} \\\hline
+\end{tabular}
+			
+\end{table}
+
+# Workflow
+
+### 
+
+```{r}
+#| eval: false
+
+install.packages("implicitMeasures")
+library(implicitMeasures)
+```
+
+
+### 
+
+\begin{center}
+
+\begin{tikzpicture}[
+    box/.style={
+        draw,
+        rounded corners=4pt,
+        minimum width=5.2cm,
+        minimum height=0.85cm,
+        align=center,
+        fill=gray!8
+    },
+    scorebox/.style={
+        draw,
+        rounded corners=4pt,
+        minimum width=5.2cm,
+        minimum height=1.05cm,
+        align=center,
+        fill=orange!18
+    },
+    outbox/.style={
+        draw,
+        rounded corners=4pt,
+        minimum width=2.2cm,
+        minimum height=0.7cm,
+        align=center,
+        fill=blue!10
+    },
+    flowarrow/.style={
+        -{Latex[length=2mm]},
+        thick,
+        draw=gray!70
+    }
+]
+
+% INPUT
+\node[box] at (0,0) (raw) {
+    \textbf{Raw data}\\[-1mm]
+    \scriptsize IAT / SC-IAT
+};
+
+% CLEANING
+\node[box] at (0,-1.6) (clean) {
+    \textbf{Data cleaning}\\[1mm]
+    \scriptsize
+    \texttt{clean\_iat()} \quad / \quad
+    \texttt{clean\_sciat()}
+};
+
+% SCORE
+\node[scorebox] at (0,-3.3) (score) {
+    \textbf{D-score computation}\\[1mm]
+    \scriptsize
+    \texttt{compute\_iat()} \quad / \quad
+    \texttt{compute\_sciat()}\\[-1mm]
+    \scriptsize choose the scoring algorithm
+};
+
+% OUTPUTS
+\node[outbox] at (-1.5,-5.0) (plot) {
+    \texttt{plot()}
+};
+
+\node[outbox] at (1.5,-5.0) (summary) {
+    \texttt{summary()}
+};
+
+% ARROWS
+\draw[flowarrow] (raw.south) -- (clean.north);
+
+\draw[flowarrow] (clean.south) -- (score.north);
+
+\draw[flowarrow] (score.south) -- ++(0,-0.45)
+    -| (plot.north);
+
+\draw[flowarrow] (score.south) -- ++(0,-0.45)
+    -| (summary.north);
+
+\end{tikzpicture}
+
+\end{center}
+
+### 
+
+```{r}
+#| eval: true
+data("raw_data") # load data
+str(raw_data)
+```
+
+
+### 
+
+\small
+
+```{r}
+iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
+                          block_id = "blockcode",
+                          mapA_practice = "practice.iat.Milkbad",
+                          mapA_test = "test.iat.Milkbad",
+                          mapB_practice = "practice.iat.Milkgood",
+                          mapB_test = "test.iat.Milkgood",
+                          latency_id = "latency",
+                          accuracy_id = "correct",
+                          trial_id = "trialcode",
+                          trial_eliminate = c("reminder", "reminder1"),
+                          demo_id = "blockcode",
+                          trial_demo = "demo")
+
+```
+
+
+### {.plain}
+
+\footnotesize
+
+```{r}
+str(iat_cleandata)
+```
+
+### 
+
+\footnotesize
+
+```{r}
+dscore = compute_iat(iat_cleandata, Dscore = "d1")
+summary(dscore)
+```
+
+
+### 
+
+```{r}
+#| eval: false
+plot(dscore, graph = "histogram")
+plot(dscore, graph = "density")
+plot(dscore, graph = "boxplot")
+plot(dscore, graph = "points", order_sbj = "D-increasing")
+```
+
+
+### {.plain}
+
+```{r}
+#| layout-ncol: 2
+#| layout-nrow: 2
+#| echo: false
+#| out-width: 70%
+plot(dscore, graph = "histogram")
+plot(dscore, graph = "density")
+plot(dscore, graph = "boxplot")
+plot(dscore, graph = "points", order_sbj = "D-increasing")
+```
+
+
+
+### 
+
+\footnotesize
+
+```{r}
+multi_iat = multi_dscore(iat_cleandata$data_keep)
+str(multi_iat)
+```
+
+
+### 
+
+```{r}
+#| eval: false
+plot(multi_iat)
+plot(multi_iat, graph = "violin")
+plot(multi_iat, graph = "individual")
+```
+
+
+
+### 
+
+```{r}
+#| echo: false
+#| out-width: 70%
+#| layout-ncol: 2
+plot(multi_iat)
+plot(multi_iat, graph = "violin")
+
+```
+
+
+
+### 
+
+```{r}
+#| echo: false
+plot(multi_iat, graph = "individual")
+```
+
+
+# Excercise 
+
+### 
+
+Download the data available from the website
