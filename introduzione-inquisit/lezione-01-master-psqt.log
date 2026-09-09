@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  9 SEP 2026 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  9 SEP 2026 13:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1268,6 +1268,18 @@ Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@cntb=\count475
 \multirow@dima=\skip72
 \bigstrutjot=\dimen361
+)
+(C:\Users\Ottavia\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/t
+ikz/libraries\tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+)
+(C:\Users\Ottavia\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgfli
+braryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
+\pgfarrowinset=\dimen362
+\pgfarrowlength=\dimen363
+\pgfarrowwidth=\dimen364
+\pgfarrowlinewidth=\dimen365
 ) (lezione-01-master-psqt.aux)
 \openout1 = `lezione-01-master-psqt.aux'.
 
@@ -1329,13 +1341,13 @@ LaTeX Font Info:    ... okay on input line 113.
 mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count476
-\scratchdimen=\dimen362
+\scratchdimen=\dimen366
 \scratchbox=\box155
 \nofMPsegments=\count477
 \nofMParguments=\count478
 \everyMPshowfont=\toks51
 \MPscratchCnt=\count479
-\MPscratchDim=\dimen363
+\MPscratchDim=\dimen367
 \MPnumerator=\count480
 \makeMPintoPDFobject=\count481
 \everyMPtoPDFconversion=\toks52
@@ -1411,459 +1423,455 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ] [3
 
-] [4
-
-] [5
-
 ]
-<categorize.png, id=885, 218.31563pt x 130.98938pt>
+<categorize.png, id=714, 218.31563pt x 130.98938pt>
 File: categorize.png Graphic file (type png)
 <use categorize.png>
-Package pdftex.def Info: categorize.png  used on input line 168.
-(pdftex.def)             Requested size: 52.07982pt x 31.2482pt.
-<categorize1.png, id=887, 194.97844pt x 146.04562pt>
+Package pdftex.def Info: categorize.png  used on input line 212.
+(pdftex.def)             Requested size: 69.438pt x 41.6616pt.
+<categorize1.png, id=716, 194.97844pt x 146.04562pt>
 File: categorize1.png Graphic file (type png)
 <use categorize1.png>
-Package pdftex.def Info: categorize1.png  used on input line 168.
-(pdftex.def)             Requested size: 52.07982pt x 39.00941pt.
- [6
+Package pdftex.def Info: categorize1.png  used on input line 212.
+(pdftex.def)             Requested size: 69.438pt x 52.01033pt.
+ [4
 
- <./categorize.png> <./categorize1.png>] (lezione-01-master-psqt.toc) [7
+ <./categorize.png> <./categorize1.png>] (lezione-01-master-psqt.toc) [5
 
-] [8
+] [6
 
-] [9
+] [7
 
-] (lezione-01-master-psqt.toc)
-[10
-
-] [11
-
-] [12
+] (lezione-01-master-psqt.toc) [8
 
 ]
-<porta.png, id=1870, 143.007pt x 72.27pt>
+[9
+
+] [10
+
+]
+<porta.png, id=1701, 143.007pt x 72.27pt>
 File: porta.png Graphic file (type png)
 <use porta.png>
-Package pdftex.def Info: porta.png  used on input line 277.
+Package pdftex.def Info: porta.png  used on input line 323.
 (pdftex.def)             Requested size: 173.59767pt x 87.73256pt.
- [13
+ [11
 
- <./porta.png>] [14
+ <./porta.png>] [12
 
-] [15
+] [13
 
 ]
-<accordo.png, id=2312, 792.123pt x 40.734pt>
+<accordo.png, id=2143, 792.123pt x 40.734pt>
 File: accordo.png Graphic file (type png)
 <use accordo.png>
-Package pdftex.def Info: accordo.png  used on input line 341.
+Package pdftex.def Info: accordo.png  used on input line 387.
 (pdftex.def)             Requested size: 312.4737pt x 16.06892pt.
- [16
+ [14
 
  <./accordo.png>]
 File: accordo.png Graphic file (type png)
 <use accordo.png>
-Package pdftex.def Info: accordo.png  used on input line 341.
+Package pdftex.def Info: accordo.png  used on input line 387.
 (pdftex.def)             Requested size: 312.4737pt x 16.06892pt.
- [17
+ [15
 
 ]
-Overfull \hbox (18.22375pt too wide) in paragraph at lines 367--367
+Overfull \hbox (18.22375pt too wide) in paragraph at lines 413--413
 []|\OT1/cmr/m/n/10.95 Completamente| 
  []
 
 
-Overfull \hbox (18.22375pt too wide) in paragraph at lines 367--367
+Overfull \hbox (18.22375pt too wide) in paragraph at lines 413--413
 []|\OT1/cmr/m/n/10.95 Completamente| 
  []
 
-[18
+[16
 
 ]
-<vas.png, id=2692, 338.76563pt x 84.315pt>
+<vas.png, id=2523, 338.76563pt x 84.315pt>
 File: vas.png Graphic file (type png)
 <use vas.png>
-Package pdftex.def Info: vas.png  used on input line 379.
+Package pdftex.def Info: vas.png  used on input line 425.
 (pdftex.def)             Requested size: 243.03569pt x 60.4906pt.
- [19
+ [17
 
- <./vas.png>] [20
+ <./vas.png>] [18
+
+] [19
+
+] (lezione-01-master-psqt.toc) [20
 
 ] [21
 
-] (lezione-01-master-psqt.toc) [22
-
-] [23
-
 ]
-<snakeFlower.png, id=3433, 364.854pt x 164.907pt>
+<snakeFlower.png, id=3263, 364.854pt x 164.907pt>
 File: snakeFlower.png Graphic file (type png)
 <use snakeFlower.png>
-Package pdftex.def Info: snakeFlower.png  used on input line 670.
+Package pdftex.def Info: snakeFlower.png  used on input line 716.
 (pdftex.def)             Requested size: 173.59767pt x 78.46248pt.
- [24
+ [22
 
  <./snakeFlower.png>]
-<down.png, id=3581, 24.09pt x 44.895pt>
+<down.png, id=3411, 24.09pt x 44.895pt>
 File: down.png Graphic file (type png)
 <use down.png>
-Package pdftex.def Info: down.png  used on input line 688.
+Package pdftex.def Info: down.png  used on input line 734.
 (pdftex.def)             Requested size: 24.53108pt x 45.71692pt.
-<wrong.jpg, id=3582, 292.09125pt x 173.64874pt>
+<wrong.jpg, id=3412, 292.09125pt x 173.64874pt>
 File: wrong.jpg Graphic file (type jpg)
 <use wrong.jpg>
-Package pdftex.def Info: wrong.jpg  used on input line 688.
+Package pdftex.def Info: wrong.jpg  used on input line 734.
 (pdftex.def)             Requested size: 173.59767pt x 103.20702pt.
- [25
+ [23
 
  <./down.png> <./wrong.jpg>]
 File: down.png Graphic file (type png)
 <use down.png>
-Package pdftex.def Info: down.png  used on input line 688.
+Package pdftex.def Info: down.png  used on input line 734.
 (pdftex.def)             Requested size: 24.53108pt x 45.71692pt.
 File: wrong.jpg Graphic file (type jpg)
 <use wrong.jpg>
-Package pdftex.def Info: wrong.jpg  used on input line 688.
+Package pdftex.def Info: wrong.jpg  used on input line 734.
 (pdftex.def)             Requested size: 173.59767pt x 103.20702pt.
- [26
+ [24
+
+] [25
+
+]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 768.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 768.
+
+[26
 
 ] [27
 
-]
+] [28
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 722.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 722.
-
-[28
-
-] [29
-
-] [30
-
-] (lezione-01-master-psqt.toc) [31
+] (lezione-01-master-psqt.toc) [29
 
 ]
-<iatbase.png, id=4558, 687.441pt x 347.772pt>
+<iatbase.png, id=4387, 687.441pt x 347.772pt>
 File: iatbase.png Graphic file (type png)
 <use iatbase.png>
-Package pdftex.def Info: iatbase.png  used on input line 849.
+Package pdftex.def Info: iatbase.png  used on input line 895.
 (pdftex.def)             Requested size: 104.15965pt x 52.68889pt.
- [32
+ [30
 
  <./iatbase.png>]
 File: iatbase.png Graphic file (type png)
 <use iatbase.png>
-Package pdftex.def Info: iatbase.png  used on input line 849.
+Package pdftex.def Info: iatbase.png  used on input line 895.
 (pdftex.def)             Requested size: 104.15965pt x 52.68889pt.
- [33
+ [31
 
 ]
 File: iatbase.png Graphic file (type png)
 <use iatbase.png>
-Package pdftex.def Info: iatbase.png  used on input line 849.
+Package pdftex.def Info: iatbase.png  used on input line 895.
 (pdftex.def)             Requested size: 104.15965pt x 52.68889pt.
 
-[34
+[32
 
 ]
-<cocagood.png, id=4879, 940.9554pt x 523.2348pt>
+<cocagood.png, id=4709, 940.9554pt x 523.2348pt>
 File: cocagood.png Graphic file (type png)
 <use cocagood.png>
-Package pdftex.def Info: cocagood.png  used on input line 867.
+Package pdftex.def Info: cocagood.png  used on input line 913.
 (pdftex.def)             Requested size: 173.59767pt x 96.53345pt.
-<cocabad.png, id=4880, 940.9554pt x 523.2348pt>
+<cocabad.png, id=4710, 940.9554pt x 523.2348pt>
 File: cocabad.png Graphic file (type png)
 <use cocabad.png>
-Package pdftex.def Info: cocabad.png  used on input line 867.
+Package pdftex.def Info: cocabad.png  used on input line 913.
 (pdftex.def)             Requested size: 173.59767pt x 96.53345pt.
- [35
+ [33
 
  <./cocagood.png> <./cocabad.png>]
 File: cocagood.png Graphic file (type png)
 <use cocagood.png>
-Package pdftex.def Info: cocagood.png  used on input line 884.
+Package pdftex.def Info: cocagood.png  used on input line 930.
 (pdftex.def)             Requested size: 173.59767pt x 96.53345pt.
 File: cocabad.png Graphic file (type png)
 <use cocabad.png>
-Package pdftex.def Info: cocabad.png  used on input line 884.
+Package pdftex.def Info: cocabad.png  used on input line 930.
 (pdftex.def)             Requested size: 173.59767pt x 96.53345pt.
- [36
+ [34
 
 ]
-<cokeIAT1.png, id=5175, 674.739pt x 347.772pt>
+<cokeIAT1.png, id=5005, 674.739pt x 347.772pt>
 File: cokeIAT1.png Graphic file (type png)
 <use cokeIAT1.png>
-Package pdftex.def Info: cokeIAT1.png  used on input line 911.
+Package pdftex.def Info: cokeIAT1.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
- [37
+ [35
 
  <./cokeIAT1.png>]
 File: cokeIAT1.png Graphic file (type png)
 <use cokeIAT1.png>
-Package pdftex.def Info: cokeIAT1.png  used on input line 911.
+Package pdftex.def Info: cokeIAT1.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
-<cokeIAT2.png, id=5264, 674.739pt x 347.772pt>
+<cokeIAT2.png, id=5093, 674.739pt x 347.772pt>
 File: cokeIAT2.png Graphic file (type png)
 <use cokeIAT2.png>
-Package pdftex.def Info: cokeIAT2.png  used on input line 911.
+Package pdftex.def Info: cokeIAT2.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
- [38
+ [36
 
  <./cokeIAT2.png>]
 File: cokeIAT1.png Graphic file (type png)
 <use cokeIAT1.png>
-Package pdftex.def Info: cokeIAT1.png  used on input line 911.
+Package pdftex.def Info: cokeIAT1.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT2.png Graphic file (type png)
 <use cokeIAT2.png>
-Package pdftex.def Info: cokeIAT2.png  used on input line 911.
+Package pdftex.def Info: cokeIAT2.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
-<cokeIAT3.png, id=5352, 674.739pt x 347.772pt>
+<cokeIAT3.png, id=5181, 674.739pt x 347.772pt>
 File: cokeIAT3.png Graphic file (type png)
 <use cokeIAT3.png>
-Package pdftex.def Info: cokeIAT3.png  used on input line 911.
+Package pdftex.def Info: cokeIAT3.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
- [39
+ [37
 
  <./cokeIAT3.png>]
 File: cokeIAT1.png Graphic file (type png)
 <use cokeIAT1.png>
-Package pdftex.def Info: cokeIAT1.png  used on input line 911.
+Package pdftex.def Info: cokeIAT1.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT2.png Graphic file (type png)
 <use cokeIAT2.png>
-Package pdftex.def Info: cokeIAT2.png  used on input line 911.
+Package pdftex.def Info: cokeIAT2.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT3.png Graphic file (type png)
 <use cokeIAT3.png>
-Package pdftex.def Info: cokeIAT3.png  used on input line 911.
+Package pdftex.def Info: cokeIAT3.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
-<cokeIAT4.png, id=5440, 674.739pt x 347.772pt>
+<cokeIAT4.png, id=5270, 674.739pt x 347.772pt>
 File: cokeIAT4.png Graphic file (type png)
 <use cokeIAT4.png>
-Package pdftex.def Info: cokeIAT4.png  used on input line 911.
+Package pdftex.def Info: cokeIAT4.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
- [40
+ [38
 
  <./cokeIAT4.png>]
 File: cokeIAT1.png Graphic file (type png)
 <use cokeIAT1.png>
-Package pdftex.def Info: cokeIAT1.png  used on input line 911.
+Package pdftex.def Info: cokeIAT1.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT2.png Graphic file (type png)
 <use cokeIAT2.png>
-Package pdftex.def Info: cokeIAT2.png  used on input line 911.
+Package pdftex.def Info: cokeIAT2.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT3.png Graphic file (type png)
 <use cokeIAT3.png>
-Package pdftex.def Info: cokeIAT3.png  used on input line 911.
+Package pdftex.def Info: cokeIAT3.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
 File: cokeIAT4.png Graphic file (type png)
 <use cokeIAT4.png>
-Package pdftex.def Info: cokeIAT4.png  used on input line 911.
+Package pdftex.def Info: cokeIAT4.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
-<cokeIAT5.png, id=5527, 674.739pt x 347.772pt>
+<cokeIAT5.png, id=5357, 674.739pt x 347.772pt>
 File: cokeIAT5.png Graphic file (type png)
 <use cokeIAT5.png>
-Package pdftex.def Info: cokeIAT5.png  used on input line 911.
+Package pdftex.def Info: cokeIAT5.png  used on input line 957.
 (pdftex.def)             Requested size: 284.52756pt x 146.65227pt.
- [41
+ [39
 
  <./cokeIAT5.png>]
-[42
+[40
 
-] [43
+] [41
 
-] [44
+] [42
 
 ]
-<yearsIAT.pdf, id=6058, 794.97pt x 614.295pt>
+<yearsIAT.pdf, id=5887, 794.97pt x 614.295pt>
 File: yearsIAT.pdf Graphic file (type pdf)
 <use yearsIAT.pdf>
-Package pdftex.def Info: yearsIAT.pdf  used on input line 976.
+Package pdftex.def Info: yearsIAT.pdf  used on input line 1022.
 (pdftex.def)             Requested size: 277.75734pt x 214.63153pt.
- [45
+ [43
 
  <./yearsIAT.pdf>]
-<coca3.jpg, id=6210, 451.6875pt x 311.1625pt>
+<coca3.jpg, id=6040, 451.6875pt x 311.1625pt>
 File: coca3.jpg Graphic file (type jpg)
 <use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1015.
+Package pdftex.def Info: coca3.jpg  used on input line 1061.
 (pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
-<pepsi3.jpg, id=6211, 451.6875pt x 328.22626pt>
+<pepsi3.jpg, id=6041, 451.6875pt x 328.22626pt>
 File: pepsi3.jpg Graphic file (type jpg)
 <use pepsi3.jpg>
-Package pdftex.def Info: pepsi3.jpg  used on input line 1015.
+Package pdftex.def Info: pepsi3.jpg  used on input line 1061.
 (pdftex.def)             Requested size: 34.719pt x 25.22691pt.
- [46
+ [44
 
  <./coca3.jpg> <./pepsi3.jpg>]
 File: coca3.jpg Graphic file (type jpg)
 <use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1015.
+Package pdftex.def Info: coca3.jpg  used on input line 1061.
 (pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
 File: pepsi3.jpg Graphic file (type jpg)
 <use pepsi3.jpg>
-Package pdftex.def Info: pepsi3.jpg  used on input line 1015.
+Package pdftex.def Info: pepsi3.jpg  used on input line 1061.
 (pdftex.def)             Requested size: 34.719pt x 25.22691pt.
+ [45
+
+]
+File: coca3.jpg Graphic file (type jpg)
+<use coca3.jpg>
+Package pdftex.def Info: coca3.jpg  used on input line 1115.
+(pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
+
+[46
+
+]
+File: coca3.jpg Graphic file (type jpg)
+<use coca3.jpg>
+Package pdftex.def Info: coca3.jpg  used on input line 1115.
+(pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
  [47
 
 ]
 File: coca3.jpg Graphic file (type jpg)
 <use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1069.
+Package pdftex.def Info: coca3.jpg  used on input line 1115.
 (pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
-
-[48
+ [48
 
 ]
 File: coca3.jpg Graphic file (type jpg)
 <use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1069.
+Package pdftex.def Info: coca3.jpg  used on input line 1115.
 (pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
  [49
 
 ]
-File: coca3.jpg Graphic file (type jpg)
-<use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1069.
-(pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
- [50
-
-]
-File: coca3.jpg Graphic file (type jpg)
-<use coca3.jpg>
-Package pdftex.def Info: coca3.jpg  used on input line 1069.
-(pdftex.def)             Requested size: 34.72165pt x 23.91542pt.
- [51
-
-]
-<scGood.png, id=6849, 667.512pt x 347.772pt>
+<scGood.png, id=6679, 667.512pt x 347.772pt>
 File: scGood.png Graphic file (type png)
 <use scGood.png>
-Package pdftex.def Info: scGood.png  used on input line 1087.
+Package pdftex.def Info: scGood.png  used on input line 1133.
 (pdftex.def)             Requested size: 173.59767pt x 90.44511pt.
-<scBad.png, id=6850, 670.578pt x 347.772pt>
+<scBad.png, id=6680, 670.578pt x 347.772pt>
 File: scBad.png Graphic file (type png)
 <use scBad.png>
-Package pdftex.def Info: scBad.png  used on input line 1087.
+Package pdftex.def Info: scBad.png  used on input line 1133.
 (pdftex.def)             Requested size: 173.59767pt x 90.0312pt.
- [52
+ [50
 
  <./scGood.png> <./scBad.png>]
-<scPgood.png, id=6999, 667.512pt x 347.772pt>
+<scPgood.png, id=6829, 667.512pt x 347.772pt>
 File: scPgood.png Graphic file (type png)
 <use scPgood.png>
-Package pdftex.def Info: scPgood.png  used on input line 1104.
+Package pdftex.def Info: scPgood.png  used on input line 1150.
 (pdftex.def)             Requested size: 173.59767pt x 90.44511pt.
-<scPbad.png, id=7000, 673.425pt x 347.772pt>
+<scPbad.png, id=6830, 673.425pt x 347.772pt>
 File: scPbad.png Graphic file (type png)
 <use scPbad.png>
-Package pdftex.def Info: scPbad.png  used on input line 1104.
+Package pdftex.def Info: scPbad.png  used on input line 1150.
 (pdftex.def)             Requested size: 173.59767pt x 89.64912pt.
- [53
+ [51
 
- <./scPgood.png> <./scPbad.png>] [54
+ <./scPgood.png> <./scPbad.png>] [52
+
+] [53
+
+] [54
 
 ] [55
 
-] [56
-
-] [57
-
 ]
-<go.png, id=7614, 375.147pt x 225.351pt>
+<go.png, id=7444, 375.147pt x 225.351pt>
 File: go.png Graphic file (type png)
 <use go.png>
-Package pdftex.def Info: go.png  used on input line 1196.
+Package pdftex.def Info: go.png  used on input line 1242.
 (pdftex.def)             Requested size: 173.59767pt x 104.28166pt.
-<nogo.png, id=7615, 375.147pt x 225.57pt>
+<nogo.png, id=7445, 375.147pt x 225.57pt>
 File: nogo.png Graphic file (type png)
 <use nogo.png>
-Package pdftex.def Info: nogo.png  used on input line 1196.
+Package pdftex.def Info: nogo.png  used on input line 1242.
 (pdftex.def)             Requested size: 173.59767pt x 104.383pt.
- [58
+ [56
 
- <./go.png> <./nogo.png>] [59
+ <./go.png> <./nogo.png>] [57
 
-] [60
+] [58
 
 ]
-<spf1.png, id=8057, 374.928pt x 232.14pt>
+<spf1.png, id=7887, 374.928pt x 232.14pt>
 File: spf1.png Graphic file (type png)
 <use spf1.png>
-Package pdftex.def Info: spf1.png  used on input line 1271.
+Package pdftex.def Info: spf1.png  used on input line 1317.
 (pdftex.def)             Requested size: 173.59767pt x 107.48349pt.
-<spf2.png, id=8058, 375.147pt x 232.14pt>
+<spf2.png, id=7888, 375.147pt x 232.14pt>
 File: spf2.png Graphic file (type png)
 <use spf2.png>
-Package pdftex.def Info: spf2.png  used on input line 1271.
+Package pdftex.def Info: spf2.png  used on input line 1317.
 (pdftex.def)             Requested size: 173.59767pt x 107.42328pt.
- [61
+ [59
 
- <./spf1.png> <./spf2.png>] (lezione-01-master-psqt.toc) [62
+ <./spf1.png> <./spf2.png>] (lezione-01-master-psqt.toc) [60
 
-] [63
+] [61
 
 ]
-<prime.png, id=8506, 890.673pt x 298.278pt>
+<prime.png, id=8336, 890.673pt x 298.278pt>
 File: prime.png Graphic file (type png)
 <use prime.png>
-Package pdftex.def Info: prime.png  used on input line 1299.
+Package pdftex.def Info: prime.png  used on input line 1345.
 (pdftex.def)             Requested size: 347.19536pt x 116.27332pt.
- [64
+ [62
 
  <./prime.png>]
-<AMP.png, id=8653, 777.231pt x 485.085pt>
+<AMP.png, id=8483, 777.231pt x 485.085pt>
 File: AMP.png Graphic file (type png)
 <use AMP.png>
-Package pdftex.def Info: AMP.png  used on input line 1318.
+Package pdftex.def Info: AMP.png  used on input line 1364.
 (pdftex.def)             Requested size: 243.03569pt x 151.6849pt.
-[65
+[63
 
  <./AMP.png>]
-<work.png, id=8801, 385.44pt x 385.44pt>
+<work.png, id=8631, 385.44pt x 385.44pt>
 File: work.png Graphic file (type png)
 <use work.png>
-Package pdftex.def Info: work.png  used on input line 1336.
+Package pdftex.def Info: work.png  used on input line 1382.
 (pdftex.def)             Requested size: 69.438pt x 69.43501pt.
- [66
+ [64
 
- <./work.png>] (lezione-01-master-psqt.toc) [67
+ <./work.png>] (lezione-01-master-psqt.toc) [65
+
+] [66
+
+]
+[67
 
 ] [68
 
-]
-[69
-
-] [70
-
-] [71
+] [69
 
 ]
-<iat-pub.png, id=9503, 857.45343pt x 408.02437pt>
+<iat-pub.png, id=9333, 857.45343pt x 408.02437pt>
 File: iat-pub.png Graphic file (type png)
 <use iat-pub.png>
-Package pdftex.def Info: iat-pub.png  used on input line 1362.
+Package pdftex.def Info: iat-pub.png  used on input line 1408.
 (pdftex.def)             Requested size: 347.19536pt x 165.21161pt.
- [72
+ [70
 
- <./iat-pub.png>] [73
+ <./iat-pub.png>] [71
+
+] [72
+
+] [73
 
 ] [74
 
 ] [75
 
 ] [76
-
-] [77
-
-] [78
 
 ]
 \tf@nav=\write7
@@ -1883,16 +1891,16 @@ L3 programming layer <2026-01-19>
  ***********
 Package rerunfilecheck Info: File `lezione-01-master-psqt.out' has not changed.
 
-(rerunfilecheck)             Checksum: 851D6E6DC80F485B8884383005EDA188;4407.
+(rerunfilecheck)             Checksum: 0C4BA44E1B0CCE818896FB77CF687A0C;4407.
  ) 
 Here is how much of TeX's memory you used:
- 31669 strings out of 467867
- 664794 string characters out of 5417366
- 1175775 words of memory out of 5000000
- 59719 multiletter control sequences out of 15000+600000
+ 32061 strings out of 467867
+ 675445 string characters out of 5417366
+ 1187959 words of memory out of 5000000
+ 60108 multiletter control sequences out of 15000+600000
  640126 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 128i,19n,123p,421b,834s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 128i,19n,123p,421b,822s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/c
 m/cmbx10.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/type1/public
 /amsfonts/cm/cmbx12.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/t
@@ -1914,9 +1922,9 @@ Ottavia/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
 cmti9.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/type1/public/am
 sfonts/cm/cmtt10.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/type
 1/public/amsfonts/symbols/msam10.pfb>
-Output written on lezione-01-master-psqt.pdf (78 pages, 13256516 bytes).
+Output written on lezione-01-master-psqt.pdf (76 pages, 13223583 bytes).
 PDF statistics:
- 10395 PDF objects out of 10688 (max. 8388607)
- 183 named destinations out of 1000 (max. 500000)
+ 10223 PDF objects out of 10688 (max. 8388607)
+ 179 named destinations out of 1000 (max. 500000)
  536 words of extra memory for PDF output out of 10000 (max. 10000000)
 

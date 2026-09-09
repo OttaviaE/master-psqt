@@ -1,13 +1,13 @@
 ---
 title: "Seminario misure implicite"
-subitle: Storia, esperimenti e analisi dei dati
-affiliation: Master di II livello in psicologia quantitativa
+subitle: "Storia, esperimenti e analisi dei dati"
+institute: "Master di II livello in psicologia quantitativa"
 author: "Ottavia Epifania"
 format: 
   html: 
    embed-resources: true
    toc: true
-   theme: superhero
+   theme: sandstone
 lang: it
 
 ---
