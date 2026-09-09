@@ -379,6 +379,29 @@ plot(multi_iat, graph = "individual")
 
 # Excercise 
 
+###
+
+Prendete i dati disponibili sul \color{blue} [sito](https://ottaviae.github.io/master-psqt/) \normalcolor del corso e importateli in R: 
+
+```{r}
+dati =  read.delim("data/iat_data.dat")
+str(dati)
+```
+
 ### 
 
-Download the data available from the website
+Sono dati di uno IAT usato nel paper
+
+Röhner, J., & Thoss, P. J. (2019). A tutorial on how to compute traditional IAT effects with R. *The Quantitative Methods for Psychology, 15*(2), 134–147.
+
+e sono accessibili su OSF
+
+Non si hanno i nomi dei blocchi, ma solo 
+
+```{r}
+table(dati$blocknum)
+```
+
+I blocchi 3 e 4 saranno la condizione A e i blocchi 6 e 7 la condizione B
+
+Calcolare i punteggi IAT con il pacchetto `implicitMeasures` e investigare le possibili differenze attribuibili alla variabile `order`

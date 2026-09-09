@@ -1,0 +1,834 @@
+\documentclass[compress]{beamer}
+\usetheme{Montpellier}
+\setbeamertemplate{navigation symbols}{horizontal}
+%\useoutertheme{infolines}
+\usecolortheme{dove}
+%\usefonttheme{serif}
+
+\usepackage[italian]{babel}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage{hyperref}
+
+\definecolor{background}{RGB}{250, 250, 250}
+\definecolor{back}{RGB}{247, 251, 255}
+\definecolor{orangered2}{RGB}{238,64,0}
+\definecolor{royalblue3}{RGB}{58,95,205}
+ \setbeamerfont{subtitle}{size=\large, series=\bfseries}
+\setbeamercolor{frametitle}{bg=background}
+\setbeamertemplate{frametitle}{\color{template}\small \bfseries\insertframetitle\par\vskip-6pt\hrulefill}
+\setbeamertemplate{navigation symbols}[default]
+\definecolor{template}{RGB}{158, 158, 158}
+\definecolor{latenti}{RGB}{54, 114, 89}
+\definecolor{manifeste}{RGB}{179, 7, 27}
+\definecolor{background}{RGB}{251, 251, 251}
+\definecolor{highlight}{RGB}{18, 10, 143}
+\definecolor{giallo}{RGB}{204 204 204}
+\definecolor{blu}{RGB}{177 11 37}
+\definecolor{orangered2}{RGB}{238,64,0}
+\definecolor{typical}{RGB}{8, 69, 148}
+\definecolor{springgreen}{RGB}{0,205,102}
+\setbeamercolor{frametitle}{fg=blu, bg = white}
+\setbeamercolor{item}{fg=giallo}
+\setbeamercolor{caption name}{fg=blu}
+\setbeamercolor{section name}{fg=white}
+\setbeamercolor{subsection name}{fg=white}
+\setbeamersize{text margin left=3mm,text margin right=3mm} 
+
+\AtBeginSection[]{
+  \begin{frame}{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\title[Experiment set up]{Misurazione Implicita in Psicologia:\\ Programmare gli esperimenti in Inquisit}
+\date[PSQT, 2026]{Master di II Livello\\ Psicologia quantitativa: Misurazione, valutazione e analisi di variabili psicosociali}
+\institute[]{11 settembre 2026, Padova}
+\author[Ottavia M. Epifania]{\texorpdfstring{Ottavia M. Epifania, Ph.D.\newline\url{ottavia.epifania@unitn.it}}{Ottavia M. Epifania}}
+
+\begin{document}
+
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+% =========================================================
+\section*{Questo corso}
+% =========================================================
+
+\begin{frame}{Obiettivo della lezione}
+Script Inquisit che contiene:
+
+\vspace{3mm}
+\begin{itemize}
+  \item uno IAT funzionante;
+  \item una scheda socio-demografica;
+  \item alcune domande esplicite sullo stesso tema;
+  \item due condizioni sperimentali basate sull'ordine di presentazione misure esplicite -- IAT.
+\end{itemize}
+
+\vspace{4mm}
+\begin{exampleblock}{}
+\centering
+Gruppo 1: esplicite $\rightarrow$ IAT \qquad
+Gruppo 2: IAT $\rightarrow$ esplicite
+\end{exampleblock}
+\end{frame}
+
+
+% =========================================================
+\section{Da un esperimento già pronto}
+% =========================================================
+
+\begin{frame}{Cosa ci serve}
+\begin{itemize}
+  \item Inquisit Lab: \href{https://www.millisecond.com/download/}{\textcolor{blue}{download}}.
+  \item Age IAT dalla test library: \href{https://www.millisecond.com/download/library/iat/ageiat}{\textcolor{blue}{AGE IAT}}.
+  \item Test library completa: \href{https://www.millisecond.com/download/library}{\textcolor{blue}{Millisecond Library}}.
+  \item Documentazione: \href{https://www.millisecond.com/support/docs/current/html/main.htm}{\textcolor{blue}{Inquisit Help}}.
+\end{itemize}
+
+\vspace{2mm}
+\begin{alertblock}{Attenzione}
+La demo di Inquisit è valida per un mese. Dopo il mese di prova, si potrà ancora usare Inquisit per la programmazione degli esperimenti, ma il software non raccoglierà più i dati. 
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Prima cosa: facciamolo correre}
+\begin{enumerate}
+  \item Aprite il file dell'Age IAT.
+  \item Eseguite l'esperimento una volta.
+  \item Guardate cosa vede un partecipante.
+  \item Salvate il file dati con un nome univoco.
+\end{enumerate}
+
+\vspace{4mm}
+\begin{exampleblock}{Esempio}
+\centering
+\texttt{dati-Mario-Rossi.dat}
+\end{exampleblock}
+
+\vspace{3mm}
+Cosa cambiereste prima di usare davvero questo esperimento?
+\end{frame}
+
+% =========================================================
+\section{La logica di Inquisit}
+% =========================================================
+
+\begin{frame}{Il workflow di Inquisit}
+\centering
+\resizebox{!}{0.67\textheight}{%
+\begin{tikzpicture}[
+  nodebox/.style={draw, rounded corners=4pt, minimum width=4.9cm, minimum height=0.95cm, align=center, fill=gray!8},
+  mainbox/.style={draw, rounded corners=4pt, minimum width=4.9cm, minimum height=0.95cm, align=center, fill=template!16},
+  finalbox/.style={draw, rounded corners=4pt, minimum width=4.9cm, minimum height=0.95cm, align=center, fill=orange!20},
+  flowarrow/.style={-{Latex[length=2.2mm]}, thick, draw=gray!70}
+]
+\node[nodebox] at (0,0) (objects) {\textbf{OGGETTI}\\[-1mm]\scriptsize Cosa voglio mostrare?\\[-1mm]\scriptsize \texttt{<item></item>}, \texttt{<text></text>}, \texttt{<picture></picture>}};
+\node[nodebox] at (0,-1.35) (trial) {\textbf{TRIAL}\\[-1mm]\scriptsize Cosa succede quando un oggetto è modificato?\\[-1mm]\scriptsize \texttt{<trial></trial>}};
+\node[mainbox] at (0,-2.70) (block) {\textbf{BLOCK}\\[-1mm]\scriptsize Come organizzo in modo coerente i trial?\\[-1mm]\scriptsize \texttt{<block></block>}};
+\node[finalbox] at (0,-4.05) (expt) {\textbf{EXPERIMENT}\\[-1mm]\scriptsize In which order are blocks presented?\\[-1mm]\scriptsize \texttt{<expt></expt>}};
+\draw[flowarrow] (objects.south) -- (trial.north);
+\draw[flowarrow] (trial.south) -- (block.north);
+\draw[flowarrow] (block.south) -- (expt.north);
+\end{tikzpicture}}
+\end{frame}
+
+\begin{frame}{Cosa faremo}
+\centering
+\resizebox{0.95\textwidth}{!}{%
+\begin{tikzpicture}[
+	phase/.style={
+		draw,
+		rounded corners=4pt,
+		minimum width=3.4cm,
+		minimum height=1.15cm,
+		align=center,
+		fill=gray!8
+	},
+	phasehi/.style={
+		draw,
+		rounded corners=4pt,
+		minimum width=3.4cm,
+		minimum height=1.15cm,
+		align=center,
+		fill=template!18
+	},
+	arrow/.style={
+		-{Latex[length=2.2mm]},
+		thick,
+		draw=gray!70
+	}
+	]
+	
+	\node[phase] at (0,0.5) (one) {
+		\textbf{1. Modifica}\\[-1mm]
+		\scriptsize Punto di partenza: Uno IAT esistente
+	};
+	
+	\node[phase] at (4.0,-1.5) (two) {
+		\textbf{2. Costruisci}\\[-1mm]
+		\scriptsize aggiungi le misure esplicite
+	};
+	
+	\node[phasehi] at (8,-3.5) (three) {
+		\textbf{3. Organizza}\\[-1mm]
+		\scriptsize Ordine di presentazione controbilanciato
+	};
+	
+	\draw[arrow] (one.south) |- (two.west);
+	\draw[arrow] (two.south) |- (three.west);
+	
+	\end{tikzpicture}}
+
+\end{frame}
+
+% =========================================================
+\section{Modificare uno IAT esistente}
+% =========================================================
+
+\begin{frame}[fragile]{Objects: etichette e stimoli}
+\begin{columns}[T]
+\begin{column}{.50\linewidth}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<item \textcolor{red}{attributeAlabel}>
+/1 = "Good"
+</item>
+
+<item \textcolor{red}{attributeA}>
+/1 = "Joy"
+/2 = "Love"
+/3 = "Peace"
+/4 = "Wonderful"
+/5 = "Pleasure"
+/6 = "Glorious"
+/7 = "Laughter"
+/8 = "Happy"
+</item>
+\end{Verbatim}
+\end{small}
+\end{column}
+\begin{column}{.48\linewidth}
+Qui diciamo a Inquisit \textbf{che cosa esiste}: categorie, parole, immagini, istruzioni.
+
+\vspace{4mm}
+Per aggiungere uno stimolo basta aggiungere una riga:
+\begin{Verbatim}
+/9 = "Bello"
+\end{Verbatim}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Objects: stimoli target}
+\begin{columns}[T]
+\begin{column}{.43\linewidth}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<item \textcolor{red}{targetAlabel}>
+/1 = "Young"
+</item>
+
+<item \textcolor{red}{targetA}>
+/1 = "yf1.jpg"
+/2 = "yf4.jpg"
+/3 = "yf5.jpg"
+/4 = "ym2.jpg"
+/5 = "ym3.jpg"
+/6 = "ym5.jpg"
+</item>
+\end{Verbatim}
+\end{small}
+\end{column}
+\begin{column}{.55\linewidth}
+Le immagini devono essere nella stessa cartella dello script.
+
+\vspace{4mm}
+Anche qui la logica è la stessa: una lista di elementi che verranno poi richiamati da \texttt{<picture>} e da \texttt{<trial>}.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Appearance: testo e immagini}
+\begin{columns}[T]
+\begin{column}{.50\linewidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+<text \textcolor{red}{attributeA}>
+/ items = \textcolor{red}{attributeA}
+/ fontstyle = ("Arial", 5%)
+/ txcolor = green
+</text>
+\end{Verbatim}
+\end{column}
+\begin{column}{.50\linewidth}
+\begin{Verbatim}[commandchars=\\\{\}]
+<picture \textcolor{red}{targetA}>
+/ items = \textcolor{red}{targetA}
+/ size = (20%, 20%)
+</picture>
+\end{Verbatim}
+\end{column}
+\end{columns}
+
+\vspace{4mm}
+\centering
+\texttt{<item>} definisce il contenuto; \texttt{<text>} e \texttt{<picture>} definiscono come appare.
+\end{frame}
+
+\begin{frame}[fragile]{Behavior: il trial}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<trial \textcolor{red}{attributeA}>
+/ validresponse = ("E", "I")
+/ correctresponse = ("E")
+/ stimulusframes = [1 = \textcolor{red}{attributeA}, \textcolor{blue}{errorReminder}]
+/ posttrialpause = parameters.ISI
+</trial>
+\end{Verbatim}
+\end{small}
+
+\vspace{3mm}
+Il trial definisce il comportamento: quali risposte sono valide, qual è la risposta corretta, quali stimoli vengono mostrati e cosa succede dopo.
+\end{frame}
+
+\begin{frame}[fragile]{Blocks: mettere insieme i trial}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<block \textcolor{red}{attributepractice}>
+/ bgstim = (\textcolor{red}{attributeAleft}, \textcolor{red}{attributeBright})
+/ trials = [
+  1 = instructions;
+  2-21 = random(\textcolor{blue}{attributeA}, \textcolor{blue}{attributeB});
+]
+/ errormessage = true(error,200)
+/ responsemode = correct
+</block>
+\end{Verbatim}
+\end{small}
+
+\vspace{2mm}
+Il blocco decide quanti trial fare e in che ordine presentarli.
+\end{frame}
+
+\begin{frame}{Esercizio 1: riconoscere la struttura}
+Nel file Age IAT:
+
+\vspace{2mm}
+\begin{enumerate}
+  \item traducete le categorie che vede il partecipante;
+  \item aggiungete una parola per ciascuna categoria attributo;
+  \item aggiungete una immagine per ciascuna categoria target;
+  \item cambiate dimensione/font degli stimoli;
+  \item cambiate i tasti di risposta;
+  \item modificate il numero di trial in un blocco di pratica.
+\end{enumerate}
+
+\vspace{3mm}
+Per ogni modifica chiedetevi: sto toccando \texttt{<item>}, \texttt{<text>/<picture>}, \texttt{<trial>} o \texttt{<block>}?
+\end{frame}
+
+\begin{frame}[fragile]{Mini-task: togliere il reminder di errore}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<trial attributeA>
+/ validresponse = ("E", "I")
+/ correctresponse = ("E")
+/ stimulusframes = [1 = attributeA, \textcolor{red}{errorReminder}]
+/ posttrialpause = parameters.ISI
+</trial>
+\end{Verbatim}
+\end{small}
+
+\vspace{2mm}
+Per toglierlo:
+\begin{small}
+\begin{Verbatim}
+/ stimulusframes = [1 = attributeA]
+\end{Verbatim}
+\end{small}
+
+\vspace{2mm}
+Questa modifica va ripetuta nei trial in cui il reminder è presente.
+\end{frame}
+
+\begin{frame}[fragile]{Mini-task: aggiungere una schermata reminder}
+\centering
+\resizebox{0.78\textwidth}{!}{%
+\begin{tikzpicture}[
+  b/.style={draw, rounded corners=4pt, minimum width=3.7cm, minimum height=.8cm, align=center, fill=gray!8},
+  a/.style={-{Latex[length=2mm]}, thick, draw=gray!70}
+]
+\node[b] at (0,0) (obj) {\textbf{1. OBJECT}\\[-1mm]\scriptsize \texttt{<text reminder>}};
+\node[b] at (4.2,0) (tri) {\textbf{2. BEHAVIOR}\\[-1mm]\scriptsize \texttt{<trial reminder>}};
+\node[b] at (8.4,0) (blo) {\textbf{3. POSITION}\\[-1mm]\scriptsize add to \texttt{<block>}};
+\draw[a] (obj.east) -- (tri.west);
+\draw[a] (tri.east) -- (blo.west);
+\end{tikzpicture}}
+
+\vspace{5mm}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<text reminder>
+/ items = ("Controlla le categorie - premi SPAZIO per cominciare")
+/ position = (50%, 75%)
+/ color = (255, 255, 255)
+/ fontstyle = ("Arial", 3%, false, false, false, false, 5, 1)
+</text>
+\end{Verbatim}
+\end{small}
+\end{frame}
+
+\begin{frame}[fragile]{Reminder: trial e block}
+\begin{columns}[T]
+\begin{column}{.48\linewidth}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<trial \textcolor{blue}{reminder}>
+/ correctresponse = (" ")
+/ frames = [1=reminder]
+/ responsemode = correct
+</trial>
+\end{Verbatim}
+\end{small}
+\end{column}
+\begin{column}{.50\linewidth}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<block attributepractice>
+/ trials = [
+  1=instructions;
+  \textcolor{red}{2=reminder;}
+  3-22 = random(attributeA, attributeB);
+]
+</block>
+\end{Verbatim}
+\end{small}
+\end{column}
+\end{columns}
+
+\vspace{3mm}
+\begin{alertblock}{Attenzione}
+Quando aggiungete un trial, aggiornate anche la numerazione dei trial successivi.
+\end{alertblock}
+\end{frame}
+
+% =========================================================
+\section{Aggiungere le misure esplicite}
+% =========================================================
+
+\begin{frame}{Costruire una nuova scheda socio demografica}
+
+
+\vspace{2mm}
+\centering
+\resizebox{!}{0.46\textheight}{%
+\begin{tikzpicture}[
+  bx/.style={draw, rounded corners=4pt, minimum width=4cm, minimum height=.85cm, align=center, fill=template!13},
+  ar/.style={-{Latex[length=2mm]}, thick, draw=gray!70}
+]
+\node[bx] at (0,0) (q) {\textbf{QUESTIONS}\\[-1mm]\scriptsize \texttt{radiobuttons}, \texttt{dropdown}, \texttt{slider}};
+\node[bx] at (0,-1.2) (p) {\textbf{SURVEY PAGE}\\[-1mm]\scriptsize \texttt{<surveypage></surveypage>}};
+\node[bx] at (0,-2.4) (b) {\textbf{BLOCK}\\[-1mm]\scriptsize \texttt{<block></block>}};
+\node[bx] at (0,-3.6) (e) {\textbf{EXPERIMENT}\\[-1mm]\scriptsize add to \texttt{<expt></expt>}};
+\draw[ar] (q.south) -- (p.north);
+\draw[ar] (p.south) -- (b.north);
+\draw[ar] (b.south) -- (e.north);
+\end{tikzpicture}}
+\end{frame}
+
+\begin{frame}{Domande esplicite}
+Le opzioni più comuni per creare domande esplicite sono:
+
+\vspace{2mm}
+\begin{itemize}
+  \item \texttt{checkboxes}: più risposte possibili;
+  \item \texttt{dropdown}: una risposta da menu a tendina;
+  \item \texttt{radiobuttons}: una risposta tra opzioni visibili;
+  \item \texttt{slider}: risposta su scala continua o ordinale.
+\end{itemize}
+
+\vspace{3mm}
+Le domande possono essere messe sulla stessa \texttt{surveypage} o divise su pagine diverse.
+\end{frame}
+
+\begin{frame}{Cosa costruiamo}
+\textbf{Scheda socio-demografica}
+\begin{itemize}
+  \item genere;
+  \item età;
+  \item occupazione.
+\end{itemize}
+
+\vspace{3mm}
+\textbf{Domande esplicite}
+\begin{itemize}
+  \item simpatia verso le persone giovani;
+  \item simpatia verso le persone anziane.
+\end{itemize}
+
+\vspace{3mm}
+Scheda e domande esplicite andranno su due pagine diverse.
+\end{frame}
+
+\begin{frame}[fragile]{Genere, età, occupazione}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<radiobuttons \textcolor{blue}{genere}>
+/ caption = "Genere"
+/ options = ("Femmina", "Maschio", "Altro")
+/orientation = horizontal
+</radiobuttons>
+\end{Verbatim}
+\end{small}
+
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<dropdown \textcolor{blue}{eta}>
+/ caption = "Età in anni compiuti"
+/ options = ("17", "18", "19", "20", ..., "più di 45")
+/ optionvalues = ("17", "18", "19", "20", ..., "più di 45")
+</dropdown>
+\end{Verbatim}
+\end{small}
+
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<checkboxes \textcolor{blue}{occupazione}>
+/ caption = "Scegli la tua occupazione"
+/ options = ("Lavoratore", "Studente", "Disoccupato", "Dottorando", 
+"Assegnista")
+/ optionvalues = ("lav", "stud", "dis", "dott", "ass")
+</checkboxes>
+\end{Verbatim}
+\end{small}
+\end{frame}
+
+\begin{frame}[fragile]{La pagina socio-demografica}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<surveypage \textcolor{blue}{demografica}>
+/ questions = [1=\textcolor{red}{genere}; 2=\textcolor{red}{eta}; 3=\textcolor{red}{occupazione}]
+/ txcolor = black
+/ finishlabel = "Pagina Successiva"
+/ nextbuttonposition = (80,90)
+/ showpagenumbers = false
+/ showquestionnumbers = false
+</surveypage>
+
+<block \textcolor{blue}{demografica}>
+/ trials = [1=\textcolor{red}{demografica}]
+/ screencolor = (170, 170, 170)
+</block>
+\end{Verbatim}
+\end{small}
+\end{frame}
+
+\begin{frame}[fragile]{Valutazione esplicita}
+\begin{footnotesize}
+\begin{Verbatim}[commandchars=\\\{\}]
+<slider \textcolor{blue}{giovani}>
+/ caption = "Le persone giovani mi stanno simpatiche"
+/ labels = ("1~nCompletamente in disaccordo", "2", "3", 
+"4~nCompletamente d'accordo")
+/ range = (1, 4)
+/ defaultresponse = "1"
+/ increment = 0.5
+/ position = (5%, 40%)
+/ showticks = true
+/ slidersize = (70%, 10%)
+/ txcolor = black
+/ fontstyle = ("Arial", 20)
+/ responsefontstyle = ("Arial",16)
+</slider>
+\end{Verbatim}
+\end{footnotesize}
+
+\vspace{2mm}
+Stessa struttura per \texttt{anziani}, cambiando etichetta e testo della domanda.
+\end{frame}
+
+\begin{frame}[fragile]{La pagina delle domande esplicite}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<surveypage \textcolor{blue}{simpatia}>
+/ questions = [1=\textcolor{blue}{giovani}; 2=\textcolor{blue}{anziani}]
+/ txcolor = black
+/ finishlabel = "Pagina Successiva"
+/ nextbuttonposition = (80,90)
+/ showpagenumbers = false
+/ showquestionnumbers = false
+</surveypage>
+
+<block \textcolor{blue}{simpatia}>
+/ trials = [1=\textcolor{red}{simpatia}]
+/ screencolor = (170, 170, 170)
+</block>
+\end{Verbatim}
+\end{small}
+\end{frame}
+
+\begin{frame}{Esercizio 2: costruire le misure esplicite}
+Create:
+
+\vspace{2mm}
+\begin{enumerate}
+  \item una \texttt{surveypage} socio-demografica con genere, età e titolo di studio;
+  \item una \texttt{surveypage} con due domande esplicite sul tema dello IAT;
+  \item i rispettivi \texttt{<block>}.
+\end{enumerate}
+
+\vspace{4mm}
+Non devono ancora comparire nell'esperimento: li assembleremo nel prossimo passaggio.
+\end{frame}
+
+% =========================================================
+\section{Assemblare l'esperimento}
+% =========================================================
+
+\begin{frame}{Abbiamo tutti i pezzi}
+\centering
+\resizebox{0.85\textwidth}{!}{%
+\begin{tikzpicture}[
+  comp/.style={draw, rounded corners=4pt, minimum width=3.3cm, minimum height=1cm, align=center, fill=gray!8},
+  ex/.style={draw, rounded corners=4pt, minimum width=3.7cm, minimum height=1cm, align=center, fill=orange!20},
+  ar/.style={-{Latex[length=2mm]}, thick, draw=gray!70}
+]
+\node[comp] at (0,0) (iat) {\textbf{IAT}\\[-1mm]\scriptsize practice + test blocks};
+\node[comp] at (4.5,0) (exp) {\textbf{EXPLICIT}\\[-1mm]\scriptsize demografica + simpatia};
+\node[ex] at (2.25,-2.0) (e) {\textbf{\texttt{<expt>}}\\[-1mm]\scriptsize experiment order};
+\draw[ar] (iat.south) -- (e.north west);
+\draw[ar] (exp.south) -- (e.north east);
+\end{tikzpicture}}
+
+\vspace{5mm}
+\textbf{in quale ordine presento i blocchi?}
+\end{frame}
+
+\begin{frame}{La manipolazione finale}
+\centering
+\resizebox{0.90\textwidth}{!}{%
+\begin{tikzpicture}[
+  root/.style={draw, rounded corners=4pt, minimum width=3.6cm, minimum height=.8cm, align=center, fill=template!15},
+  group/.style={draw, rounded corners=4pt, minimum width=3.9cm, minimum height=.8cm, align=center, fill=orange!18},
+  block/.style={draw, rounded corners=4pt, minimum width=3.9cm, minimum height=.8cm, align=center, fill=gray!8},
+  ar/.style={-{Latex[length=2mm]}, thick, draw=gray!70}
+]
+\node[root] at (0,0) (subj) {PARTICIPANT};
+\node[root] at (0,-1.05) (groups) {\texttt{/ groups}};
+\node[group] at (-2.5,-2.25) (g1) {\textbf{Group 1}\\[-1mm]\scriptsize \texttt{(1 of 2)}};
+\node[group] at (2.5,-2.25) (g2) {\textbf{Group 2}\\[-1mm]\scriptsize \texttt{(2 of 2)}};
+\node[block] at (-2.5,-3.55) (g1a) {Explicit measures};
+\node[block] at (-2.5,-4.65) (g1b) {IAT};
+\node[block] at (2.5,-3.55) (g2a) {IAT};
+\node[block] at (2.5,-4.65) (g2b) {Explicit measures};
+\draw[ar] (subj.south) -- (groups.north);
+\draw[ar] (groups.south) -- (g1.north);
+\draw[ar] (groups.south) -- (g2.north);
+\draw[ar] (g1.south) -- (g1a.north);
+\draw[ar] (g1a.south) -- (g1b.north);
+\draw[ar] (g2.south) -- (g2a.north);
+\draw[ar] (g2a.south) -- (g2b.north);
+\end{tikzpicture}}
+\end{frame}
+
+\begin{frame}[fragile]{Prima: lo IAT originale usa già due gruppi}
+\begin{columns}[T]
+\begin{column}{.49\linewidth}
+\begin{footnotesize}
+\begin{Verbatim}[commandchars=\\\{\}]
+<expt>
+/ onexptbegin = [
+ values.conditionOrder = "c-ic"
+]
+/ groups = \textcolor{blue}{(1 of 2)}
+/ blocks = [
+ 1=targetcompatiblepractice;
+ 2=attributepractice;
+ 3=compatibletest1;
+ 4=compatibletest2;
+ 5=targetincompatiblepractice;
+ 6=incompatibletest1;
+ 7=incompatibletest2;
+ 8=summary; 9=end;
+]
+</expt>
+\end{Verbatim}
+\end{footnotesize}
+\end{column}
+\begin{column}{.49\linewidth}
+\begin{footnotesize}
+\begin{Verbatim}[commandchars=\\\{\}]
+<expt>
+/ onexptbegin = [
+ values.conditionOrder = "ic-c"
+]
+/ groups = \textcolor{blue}{(2 of 2)}
+/ blocks = [
+ 1=targetincompatiblepractice;
+ 2=attributepractice;
+ 3=incompatibletest1;
+ 4=incompatibletest2;
+ 5=targetcompatiblepractice;
+ 6=compatibletest1;
+ 7=compatibletest2;
+ 8=summary; 9=end;
+]
+</expt>
+\end{Verbatim}
+\end{footnotesize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Scelta didattica}
+Per l'esercitazione di oggi fissiamo l'ordine interno dello IAT.
+
+\vspace{4mm}
+Non manipoliamo più anche C--IC vs IC--C
+
+\vspace{4mm}
+\begin{exampleblock}{Manipoliamo una sola cosa}
+\centering
+l'ordine tra misure esplicite e IAT
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Group 1: esplicite prima dello IAT}
+\begin{footnotesize}
+\begin{Verbatim}[commandchars=\\\{\}]
+<expt>
+/ onexptbegin = [
+ values.conditionOrder = "c-ic"
+]
+/ preinstructions = (iatintro)
+\textcolor{red}{/ groups = (1 of 2)}
+/ blocks = [
+ \textcolor{blue}{1=demo_istruzioni; 2=demografica; 3=simpatia;}
+ 4=IAT1; 5=targetcompatiblepractice;
+ 6=IAT2; 7=attributepractice;
+ 8=IAT3; 9=compatibletest1;
+ 10=IAT_pause; 11=compatibletest2;
+ 12=IAT4; 13=targetincompatiblepractice;
+ 14=IAT5; 15=incompatibletest1;
+ 16=IAT_pause; 17=incompatibletest2;
+ 18=summary; 19=end;
+]
+</expt>
+\end{Verbatim}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}[fragile]{Group 2: esplicite dopo lo IAT}
+\begin{footnotesize}
+\begin{Verbatim}[commandchars=\\\{\}]
+<expt>
+/ onexptbegin = [
+ values.conditionOrder = "c-ic"
+]
+/ preinstructions = (iatintro)
+\textcolor{red}{/ groups = (2 of 2)}
+/ blocks = [
+ 1=IAT1; 2=targetcompatiblepractice;
+ 3=IAT2; 4=attributepractice;
+ 5=IAT3; 6=compatibletest1;
+ 7=IAT_pause; 8=compatibletest2;
+ 9=IAT4; 10=targetincompatiblepractice;
+ 11=IAT5; 12=incompatibletest1;
+ 13=IAT_pause; 14=incompatibletest2;
+ \textcolor{blue}{15=demo_istruzioni; 16=demografica; 17=simpatia;}
+ 18=summary; 19=end;
+]
+</expt>
+\end{Verbatim}
+\end{footnotesize}
+\end{frame}
+
+\begin{frame}{Esercizio finale in aula}
+Avete uno script quasi completo.
+
+\vspace{3mm}
+Il vostro compito è assemblarlo in due condizioni:
+
+\vspace{3mm}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{Gruppo} & \textbf{Ordine} & \textbf{Cosa modificare} \\
+\midrule
+1 & Esplicite $\rightarrow$ IAT & \texttt{/ groups} e \texttt{/ blocks} \\
+2 & IAT $\rightarrow$ Esplicite & \texttt{/ groups} e \texttt{/ blocks} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\vspace{3mm}
+Quello che conta non è copiare righe: è capire dove si decide l'ordine sperimentale.
+\end{frame}
+
+% =========================================================
+\section{Dati e analisi}
+% =========================================================
+
+\begin{frame}[fragile]{Salvare i dati}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<data>
+/ columns = (build, computer.platform, date, time,
+ subject, group, session,
+ blockcode, blocknum, trialcode, trialnum,
+ values.conditionOrder,
+ response, correct, latency,
+ stimulusnumber, stimulusitem,
+ expressions.da, expressions.db, expressions.d,
+ expressions.percentcorrect,
+ expressions.propRT300, expressions.excludeCriteriaMet)
+</data>
+\end{Verbatim}
+\end{small}
+
+\vspace{2mm}
+Per analizzare i dati ci servono soprattutto: partecipante, gruppo, blocco, trial, risposta, correttezza e latenza.
+\end{frame}
+
+\begin{frame}{Summary dei risultati}
+Inquisit può mostrare un feedback immediato con il \emph{D-score}.
+
+\vspace{3mm}
+\begin{exampleblock}{Pro}
+Feedback immediato e possibilità di salvare il punteggio nel file dati.
+\end{exampleblock}
+
+\begin{alertblock}{Contro}
+Da evitare prima di eventuali questionari espliciti. Inoltre, per analisi replicabili, è meglio ricalcolare il \emph{D-score} a partire dai dati grezzi.
+\end{alertblock}
+\end{frame}
+
+% =========================================================
+\section{A casa}
+% =========================================================
+
+\begin{frame}{Consegna}
+Create uno IAT per investigare un tema di vostro interesse.
+
+\vspace{3mm}
+Aggiungete:
+\begin{itemize}
+  \item almeno 4 domande socio-demografiche;
+  \item almeno 3 domande esplicite sullo stesso tema dello IAT;
+  \item due condizioni sperimentali: esplicite prima vs esplicite dopo;
+  \item esportazione dei dati trial-by-trial.
+\end{itemize}
+
+\end{frame}
+
+\end{document}

@@ -1,0 +1,19 @@
+\frametitle{Salvare i dati}
+\begin{small}
+\begin{Verbatim}[commandchars=\\\{\}]
+<data>
+/ columns = (build, computer.platform, date, time,
+ subject, group, session,
+ blockcode, blocknum, trialcode, trialnum,
+ values.conditionOrder,
+ response, correct, latency,
+ stimulusnumber, stimulusitem,
+ expressions.da, expressions.db, expressions.d,
+ expressions.percentcorrect,
+ expressions.propRT300, expressions.excludeCriteriaMet)
+</data>
+\end{Verbatim}
+\end{small}
+
+\vspace{2mm}
+Per analizzare i dati ci servono soprattutto: partecipante, gruppo, blocco, trial, risposta, correttezza e latenza.

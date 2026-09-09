@@ -1,0 +1,9 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\beamer@sectionintoc {2}{Da un esperimento già pronto}{3}{0}{1}
+\beamer@sectionintoc {3}{La logica di Inquisit}{6}{0}{2}
+\beamer@sectionintoc {4}{Modificare uno IAT esistente}{9}{0}{3}
+\beamer@sectionintoc {5}{Aggiungere le misure esplicite}{19}{0}{4}
+\beamer@sectionintoc {6}{Assemblare l'esperimento}{28}{0}{5}
+\beamer@sectionintoc {7}{Dati e analisi}{36}{0}{6}
+\beamer@sectionintoc {8}{A casa}{39}{0}{7}

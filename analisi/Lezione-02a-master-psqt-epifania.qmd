@@ -585,10 +585,10 @@ plot(theta, IRT(theta, b = b[1], a = a[1]),
   
 segments(-7, 0.5, 
          b[1], 0.5, 
-         col = "red", lty = 3, lwd = 3)
+         col = "darkred", lty = 3, lwd = 3)
 segments(b[1], -0.5, 
          b[1], 0.5, 
-         col = "red", lty = 3, lwd = 3)
+         col = "darkred", lty = 3, lwd = 3)
 
 si = data.frame(stim1 = b[1], stim2 = b[2], stim3 = b[3], 
                 stim4 = b[4], stim5 = b[5])
@@ -600,10 +600,10 @@ for ( i in 2:length(b)) {
       lty = 1, lwd=3, col = my_colors[i])
   segments(-7, 0.5, 
          b[i], 0.5, 
-         col = "red", lty = 3, lwd = 3)
+         col = "darkred", lty = 3, lwd = 3)
 segments(b[i], -0.5, 
          b[i], 0.5, 
-         col = "red", lty = 3, lwd = 3)
+         col = "darkred", lty = 3, lwd = 3)
 text(x= b[i] +.5, 
      y = 0.8, colnames(si)[i], col = my_colors[i], cex = 2)
 
@@ -1056,7 +1056,7 @@ stimuli     & $b_s$         & $\delta_s$ \\
 
 ### All models are wrong...
 
-Il miglior modello viene trovato con model comparison, in particolare facendo riferimento all'Akaike's Information Criterion (AIC) e al Bayesian Iformation Criterion (BIC)
+Il miglior modello viene trovato con model comparison, in particolare facendo riferimento all'Akaike's Information Criterion (AIC) e al Bayesian Information Criterion (BIC)
 
 Sono indici di entropia: Penalizzano la verosimiglianza del modello per il numero di parametri
 
@@ -1158,7 +1158,7 @@ table(data$respondent, data$condition)
 
 
 
-## GLMMs per le accuaratezze
+## GLMMs per le accuratezze
 
 ###
 
@@ -1399,34 +1399,35 @@ ggplot(ab_iatSingles,
 ::::
 
 
-### Codice - Distribuzione abilità 
+### Codice - Distribuzione abilità {.plain}
 
-\footnotesize
+\scriptsize
 
 ```{r}
 #| echo: true
 #| eval: false
 ab_iat =  as.data.frame(ranef(accuracy2,   # BLUP of the stimuli
                               condVar = TRUE)) 
-ab_iatSingles = ab_iat[ab_iat$grpvar %in% "respondent", c("grpvar", "condval", "condsd")]
+ab_iatSingles = ab_iat[ab_iat$grpvar %in% "respondent",
+                       c("grpvar", "condval", "condsd")]
 
 ab_iat = data.frame(sbj = rownames(coef(accuracy2)$respondent),
                     theta = coef(accuracy2)$respondent[,1]) 
 # density ability ----
 ggplot(ab_iat, 
                          aes(x = theta)) + 
-  geom_density()  + # object containing the starting plot
-  geom_density(fill = "springgreen4", # change the color of the filling of the density distribution
+  geom_density()  + 
+  geom_density(fill = "springgreen4", 
                alpha = .50) + 
-  theme_light() + # define the theme of the plot
-  theme(legend.position =  "none", # remove the legend
-        axis.title.y = element_blank(), # remove the title of the y-axis
-        axis.title.x = element_text(size = 30, face = "bold"), # increase the size of x-axis title and set it to bold
-        axis.text = element_text(size = 26, face = "bold")) + # increase the size of x-axis text and set it to bold
+  theme_light() + 
+  theme(legend.position =  "none",
+        axis.title.y = element_blank(), 
+        axis.title.x = element_text(size = 30, face = "bold"),
+        axis.text = element_text(size = 26, face = "bold")) +
   xlab(expression(theta))
 ```
 
-### Codice - Differenze abituali abilità
+### Codice - Differenze individuali abilità
 
 \footnotesize
 
@@ -1556,12 +1557,12 @@ easiness_iat$categoria <- factor(easiness_iat$categoria, levels = cat_levels)
 easiness_iat <- easiness_iat[order(easiness_iat$categoria, easiness_iat$stimuli), ]
 easiness_iat$stimuli <- factor(easiness_iat$stimuli, levels = unique(easiness_iat$stimuli))
 # graphs stimuli ----
-graph_b_ci = ggplot(easiness_iat, # dataset with the easiness estimates
-                    aes(x = b, # easiness estimates on the x-axis
-                        y = stimuli, # labels of the stimuli on the y axis
-                        color = Condition)) + # change the color according to the condition
-  geom_point() + # draw points to represent the easiness of each stimulus
-  geom_errorbarh(aes(xmin = b - 1.96*se, # draw the error bars to represent the confidence intervals  (CI)
+graph_b_ci = ggplot(easiness_iat, 
+                    aes(x = b,
+                        y = stimuli, 
+                        color = Condition)) + 
+  geom_point() + 
+  geom_errorbarh(aes(xmin = b - 1.96*se, 
                      xmax= b + 1.96*se)) 
 ```
 
@@ -1596,18 +1597,17 @@ ggplot(speed,
 ```
 
 
-### Codice distribuzioni velocità per condizione
+### Codice distribuzioni velocità per condizione {.plain}
 
-\footnotesize
+\scriptsize
 
 ```{r}
 #| echo: true
 #| eval: false
 
 speed = as.data.frame(ranef(logtime3), condvar= TRUE)
-fixef_speed = data.frame(term = names(fixef(logtime3)), # assign the labels of the conditions to the term column
-                         est = (fixef(logtime3))) # assign the estimates of the fixed effects to the est column
-# merge together the fixed effects and stimuli BLUP with their variances
+fixef_speed = data.frame(term = names(fixef(logtime3)),
+                         est = (fixef(logtime3)))
 speed = merge(speed, fixef_speed)
 speed$tau = speed$condval + speed$est
 # graph density ----
@@ -1649,9 +1649,9 @@ ggplot(speed,
 
 ```
 
-### Codice differenze individuali velocità
+### Codice differenze individuali velocità {.plain}
 
-\footnotesize
+\scriptsize
 
 ```{r}
 #| echo: true
@@ -1670,7 +1670,8 @@ ggplot(speed,
                                axis.text.x = element_text(size = 24), 
                                axis.text.y = element_blank(),
                                legend.text = element_text(size = 24)) + 
-  geom_errorbar(aes(xmin = tau - 1.96*condsd, xmax = tau + 1.96*condsd), linewidth=.95)
+  geom_errorbar(aes(xmin = tau - 1.96*condsd, xmax = tau + 1.96*condsd), 
+                linewidth=.95)
 
 ```
 
@@ -1746,7 +1747,7 @@ intensity <- intensity[order(intensity$categoria, intensity$stimuli), ]
 intensity$stimuli <- factor(intensity$stimuli, levels = unique(intensity$stimuli))
 
 ggplot(intensity, 
-       aes(x = condval, y = stimuli, col = categoria)) + geom_point() + # increase the size of the points
+       aes(x = condval, y = stimuli, col = categoria)) + geom_point() + 
   geom_errorbarh(aes(xmin = condval - 1.96*condsd, 
                      xmax= condval + 1.96*condsd)) + 
   theme_light()
@@ -1765,5 +1766,11 @@ knitr::include_graphics("img/psymeth.png")
 [https://doi.org/10.1037/met0000708](https://doi.org/10.1037/met0000708)
 
 
+# Esercizio 
 
+### 
+
+Scaruicare i dati IAT dal sito del corso e provare ad analizzarli con l'approccio misto presentato (sia accuratezze sia tempi)
+
+Calcolare anche uno scoring classico e confrontarlo con le stime dei soggetti ottenute dai tempi di risposta
 

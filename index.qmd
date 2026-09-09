@@ -6,7 +6,8 @@ author: "Ottavia Epifania"
 format: 
   html: 
    embed-resources: true
-   theme: quarz
+   toc: true
+   theme: superhero
 lang: it
 
 ---
@@ -18,12 +19,19 @@ lang: it
 
 # Esperimenti
 
-[Esperimenti in inqusit](introduzione-inquisit/Lezione-inquisit-master-psqt.pdf)
+[Esperimenti in inqusit](introduzione-inquisit/Lezione-inquisit-master-psqt-restructured.pdf)
 
 # Analisi dei dati
 
+
+## Metodo classico 
+
 [Analisi dei dati IAT con i metodi classici](analisi/Lezione-02-master-psqt-epifania.pdf)
+
+[Download data - Analisi classiche](analisi/data/iat_data.dat)
+
+## Modelli misti
 
 [Analisi dei dati IAT con i GLMMs](analisi/Lezione-02a-master-psqt-epifania.pdf)
 
-[Download data](analisi/data/iat_data.dat)
+[Download data - Analisi modelli misti](analisi/data/iat-stimuli-subjects.dat)
