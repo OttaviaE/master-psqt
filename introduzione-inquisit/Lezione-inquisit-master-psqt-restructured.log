@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  9 SEP 2026 13:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  10 SEP 2026 15:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1410,7 +1410,7 @@ t' has not changed.
 Here is how much of TeX's memory you used:
  27562 strings out of 467867
  552429 string characters out of 5417366
- 934449 words of memory out of 5000000
+ 934450 words of memory out of 5000000
  55776 multiletter control sequences out of 15000+600000
  637298 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1428,7 +1428,7 @@ m/cmtt8.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/type1/public/
 amsfonts/cm/cmtt9.pfb><C:/Users/Ottavia/AppData/Local/Programs/MiKTeX/fonts/typ
 e1/public/amsfonts/symbols/msam10.pfb>
 Output written on Lezione-inquisit-master-psqt-restructured.pdf (40 pages, 3957
-03 bytes).
+58 bytes).
 PDF statistics:
  1464 PDF objects out of 1728 (max. 8388607)
  89 named destinations out of 1000 (max. 500000)
