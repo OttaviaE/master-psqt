@@ -1,13 +1,14 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\beamer@sectionintoc {1}{Cognizione e Cognizione sociale}{2}{0}{1}
-\beamer@sectionintoc {2}{Validità delle misure in Psicologia}{5}{0}{2}
+\beamer@sectionintoc {1}{Cognizione e Cognizione sociale}{3}{0}{1}
+\beamer@sectionintoc {2}{Validità delle misure in Psicologia}{6}{0}{2}
 \beamer@sectionintoc {3}{Misurazione esplicita}{8}{0}{3}
-\beamer@sectionintoc {4}{Misurazione implicita: Davvero la soluzione?}{20}{0}{4}
-\beamer@sectionintoc {5}{Misure implicite basate sulle associazioni automatiche}{29}{0}{5}
-\beamer@subsectionintoc {5}{1}{Implicit Association Test}{30}{0}{5}
-\beamer@subsectionintoc {5}{5}{Single Category IAT}{46}{0}{5}
-\beamer@subsectionintoc {5}{7}{Go-No/Go Association Task}{53}{0}{5}
-\beamer@sectionintoc {6}{Misure implicite basate sul priming}{60}{0}{6}
-\beamer@subsectionintoc {6}{1}{Affective Misattribution Procedure}{63}{0}{6}
-\beamer@sectionintoc {7}{A measure in search of a construct}{65}{0}{7}
+\beamer@sectionintoc {4}{Misurazione implicita: Davvero la soluzione?}{21}{0}{4}
+\beamer@sectionintoc {5}{Misure implicite basate sulle associazioni automatiche}{30}{0}{5}
+\beamer@subsectionintoc {5}{1}{Implicit Association Test}{31}{0}{5}
+\beamer@subsectionintoc {5}{5}{Single Category IAT}{49}{0}{5}
+\beamer@subsectionintoc {5}{7}{Go-No/Go Association Task}{57}{0}{5}
+\beamer@subsectionintoc {5}{9}{Sorting Paired Features Task}{63}{0}{5}
+\beamer@sectionintoc {6}{Misure implicite basate sul priming}{66}{0}{6}
+\beamer@subsectionintoc {6}{1}{Affective Misattribution Procedure}{69}{0}{6}
+\beamer@sectionintoc {7}{A measure in search of a construct}{72}{0}{7}

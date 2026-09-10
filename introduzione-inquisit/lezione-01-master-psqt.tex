@@ -101,7 +101,12 @@
 		\tableofcontents[currentsection,currentsubsection]
 	\end{frame}
 }  
-
+\AtBeginSubsection[]
+{
+	\begin{frame}
+		\tableofcontents[currentsubsection]
+	\end{frame}
+}  
 
 
 %\title[Implicit assessment]{Implicit assessment in psychology: \\ How to work with the IAT}
@@ -119,11 +124,24 @@
     \maketitle
 \end{frame}
 
+\begin{frame}
+	\Large
+	\centering
+	Volete misurare il pregiudizio: Come fate? 
+	
+\normalsize
+\href{https://app.wooclap.com/IPRHENI?from=status-bar}{Rispondete su wooclap.com} usando il codice: IPRHENI
+
+(se il link non funziona): wooclap.com e inserite il codice)
+
+	
+\end{frame}
 
 \section[Cognizione]{Cognizione e Cognizione sociale}
 
 
 \begin{frame}
+	\centering
 \begin{tikzpicture}[
 	node distance=0.55cm,
 	box/.style={
@@ -229,7 +247,6 @@
 		\end{itemize} 
 	\end{block}	
 	
-	\pause
 	\begin{block}{Validità statistica}
 		
 		Quello che stiamo inferendo a partire dalle analisi ha senso perché le analisi hanno senso! 
@@ -253,7 +270,7 @@
 		
 		\begin{itemize}
 			\item Quanto sei d'accordo con l'affermazione ``Sono una persona puntuale''
-			\item Con quale frequenza ti sei sentito allegro nelle due ultime due settimane? 
+			\item Con quale frequenza ti sei sentito allegro nelle ultime due settimane? 
 			\item Quanto ti ritieni soddisfatto del corso di statistica? 
 			\item Ti piacciono i fiori?
 		\end{itemize}
@@ -668,6 +685,47 @@
 \end{frame}
 
 
+\begin{frame}{Un problema della persona o della misura?}
+	
+	\begin{center}
+		\large
+		
+		Vogliamo misurare un \textbf{atteggiamento socialmente sensibile}.
+		
+		\vspace{5mm}
+		
+		Una persona fornisce una risposta\\
+		\textbf{socialmente desiderabile}.
+		
+		\vspace{7mm}
+		
+		\begin{tikzpicture}
+			\node[
+			draw,
+			rounded corners=5pt,
+			fill=gray!8,
+			text width=9cm,
+			align=center,
+			inner sep=10pt
+			] {
+				\Large
+				\textbf{La misura ha fallito?}
+			};
+		\end{tikzpicture}
+		
+		\vspace{7mm}
+		
+		E se sì...
+		
+		\vspace{2mm}
+		
+		\textbf{come potremmo costruire una misura che renda più difficile\\
+			controllare volontariamente la risposta?}
+		
+	\end{center}
+	
+\end{frame}
+
 \section[Mis. implicita]{Misurazione implicita: Davvero la soluzione?}
 
 
@@ -741,7 +799,7 @@
 	\vspace{3mm}
 	
 	\begin{quote}
-		Essere rapidi nell'associare i serpenti ad aggettivi o parole con valenza negativa non implica che non sia consapevoli dei propri atteggiamenti negativi verso i serpenti!
+		Essere rapidi nell'associare i serpenti ad aggettivi o parole con valenza negativa non implica che non si sia consapevoli dei propri atteggiamenti negativi verso i serpenti!
 	\end{quote}
 	
 	\vspace{1.45mm}
@@ -1021,6 +1079,10 @@ In caso di errore $\rightarrow$ X rossa sullo schermo che blocca la compilazione
 	\end{figure}
 \end{frame}
 
+\begin{frame}
+	wooclap.com, codice IPRHENI
+\end{frame}
+
 \subsection*{Uno dei problemi}
 \begin{frame}
 	\onslide<1->
@@ -1260,7 +1322,7 @@ In caso di errore $\rightarrow$ X rossa sullo schermo che blocca la compilazione
 	%	Empty cells (no false alarms or misses) $\rightarrow$ $0.35/\mathrm{number \, of \, trials}$
 \end{frame}
 
-\subsection*{Sorting Paired Features Task}
+\subsection{Sorting Paired Features Task}
 \begin{frame}
 	\vskip0pt plus 1filll
 	Bar-Anan et. al (2009):
@@ -1415,12 +1477,10 @@ Pensare (in gruppo) a uno o più argomenti di indagine:
 		Non c'è dubbio sulla sua validità per fare questo!
 	\end{quote}
 	
-	\pause
 	\vspace{1.5mm}
 	
 	Il problema è che lo IAT è stato sviluppato con uno scopo differente... come misura delle \emph{differenze individuali}!
 	
-	\pause 
 	\vspace{1.5mm}
 	
 	Il fatto che lo IAT produca delle differenza di gruppo attendibili nella forza delle associazioni automatiche  \textbf{non implica} che produca misure valide delle differenze individuali
@@ -1484,13 +1544,6 @@ C'è un però
  
 \end{frame}
 
-
-%\begin{frame}{Alcuni dei problemi}
-%	\begin{itemize}
-%		\item La presenza di diversi scoring senza alcuna indicazione su quale usare e quando 
-%		\item La presentazione del feedback 
-%	\end{itemize}
-%\end{frame}
 
 
 
