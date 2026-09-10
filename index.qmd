@@ -21,6 +21,9 @@ lang: it
 
 [Esperimenti in inqusit](introduzione-inquisit/Lezione-inquisit-master-psqt-restructured.pdf)
 
+[File istruzioni IAT](analisi/data/Istruzioni.txt)
+
+
 # Analisi dei dati
 
 
