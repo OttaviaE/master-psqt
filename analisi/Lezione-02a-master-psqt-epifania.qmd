@@ -16,7 +16,7 @@ header-includes:
     - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
     - \AtBeginDocument{\institute[]{Master di II livello in Psicologia quantitativa}}
     - \AtBeginSubsection{}
-    - \AtBeginDocument{\date[]{11 Settembre 2026}}
+    - \AtBeginDocument{\date[]{12 Settembre 2026}}
     - \usecolortheme{dove}
     - \useinnertheme{rounded}
     - \useoutertheme{miniframes}
@@ -522,7 +522,7 @@ La condizione "innaturale" (*incompatibile*)
 ::: {.column width="50%"}
 \centering
 
-\textcolor{latenti}{Differenze a livewllo del campione}:
+\textcolor{latenti}{Differenze a livello del campione}:
 
 Il senso di compatibile e incompatibile può essere definito a priori, *può non variare da persona a persona*
 
@@ -551,11 +551,11 @@ Il senso di compatibile e incompatibile *può variare da persona a persona*
 \small
 
 $$P(x_{ps} = 1|\theta_p, b_s) = \dfrac{\exp(\theta_p - b_s)}{1+ \exp(\theta_p - b_s)}$$
-$\theta_p$: Livello del tratto latente della persona $p$ \footnotesize{Maggiore è il valore, più alta è l'abilità} \normalsize
+$\theta_p$: Livello del tratto latente della persona $p$ \footnotesize Maggiore è il valore, più alta è l'abilità  \normalsize
 
-$b_s$: Potere "sfidante" dello stimolo $s$ \footnotesize{Maggiore è il valore, più alta è la difficoltà} \normalsize
+$b_s$: Potere "sfidante" dello stimolo $s$ \footnotesize Maggiore è il valore, più alta è la difficoltà \normalsize
 
-\vspace{-5mm}
+\vspace{-3mm}
 
 ```{r}
 #| echo: false
@@ -620,9 +620,9 @@ text(x= b[i] +.5,
 $$E(t_{ps}| \tau_p, \delta_s) = \delta_s - \tau_p + \varepsilon$$
 
 
-$\tau_p$: La velocità della persona $p$ nello svolgere il compito \footnotesize{Maggiore è il valore, più $p$ è veloce} \normalsize
+$\tau_p$: La velocità della persona $p$ nello svolgere il compito \footnotesize Maggiore è il valore, più $p$ è veloce  \normalsize
 
-$\delta_s$: La time intensity dello stimolo $s$ (ovvero il tempo che ogni stimoli richiede prima di ottenere una risposta) \footnotesize{Maggiore è il valore, maggiore è il tempo richiesto dallo stimolo $s$} \normalsize
+$\delta_s$: La time intensity dello stimolo $s$ (ovvero il tempo che ogni stimoli richiede prima di ottenere una risposta) \footnotesize Maggiore è il valore, maggiore è il tempo richiesto dallo stimolo $s$ \normalsize
 
 
 

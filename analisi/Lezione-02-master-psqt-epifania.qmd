@@ -16,7 +16,7 @@ header-includes:
     - \AtBeginDocument{\author[Ottavia M. Epifania]{Ottavia M. Epifania \\ University of Trento \\\texttt{ottavia.epifania@unitn.it}}}
     - \AtBeginDocument{\institute[]{Master di II livello in Psicologia quantitativa}}
     - \AtBeginSubsection{}
-    - \AtBeginDocument{\date[]{11 Settembre 2026}}
+    - \AtBeginDocument{\date[]{12 Settembre 2026}}
     - \usecolortheme{dove}
     - \useinnertheme{rounded}
     - \useoutertheme{miniframes}
@@ -299,7 +299,7 @@ iat_cleandata <- clean_iat(raw_data, sbj_id = "Participant",
 str(iat_cleandata)
 ```
 
-### 
+### {.plain}
 
 \footnotesize
 
@@ -326,7 +326,8 @@ plot(dscore, graph = "points", order_sbj = "D-increasing")
 #| layout-ncol: 2
 #| layout-nrow: 2
 #| echo: false
-#| out-width: 70%
+#| out-width: 50%
+#| fig-align: center
 plot(dscore, graph = "histogram")
 plot(dscore, graph = "density")
 plot(dscore, graph = "boxplot")
