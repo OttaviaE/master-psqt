@@ -33,6 +33,8 @@ lang: it
 
 [Download data - Analisi classiche](analisi/data/iat_data.dat)
 
+[script R a lezione](analisi/script-multi.R)
+
 ## Modelli misti
 
 [Analisi dei dati IAT con i GLMMs](analisi/Lezione-02a-master-psqt-epifania.pdf)
