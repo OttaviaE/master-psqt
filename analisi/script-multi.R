@@ -143,3 +143,38 @@ newresultsSingle$sig = factor(newresultsSingle$p_value < .05)
 ggplot(newresultsSingle, 
        aes(x = dscore, y = t_stat, size = p_value, col = sig)) + 
   geom_point(size = 3)
+
+
+# Modelli misti ------ 
+library(lme4)
+dati = read.csv("analisi/data/iat-stimuli-subjects.csv")
+dati$condition = dati$blockcode
+dati$condition = gsub("practice_|test_", "", dati$condition)
+
+acc0 = glmer(correct ~ 0 + condition + (1|stimulusitem1) + (1|subject), 
+             data = dati, 
+             family = "binomial")
+
+acc1 = glmer(correct ~ 0 + condition + (0+ condition|stimulusitem1) + (1|subject), 
+             data = dati, 
+             family = "binomial")
+summary(acc1)
+acc2 = glmer(correct ~ 0 + condition + (1|stimulusitem1) + (0+condition|subject), 
+             data = dati, 
+             family = "binomial")
+summary(acc2)
+anova(acc0, acc1, acc2)
+dati$loglat = log(dati$latency)
+log0 = lmer(loglat ~ 0 + condition + (1|stimulusitem1) + (1|subject), 
+             data = dati, 
+             REML = F)
+summary(log0)
+log1 = lmer(loglat ~ 0 + condition + (0+ condition|stimulusitem1) + (1|subject), 
+             data = dati, 
+            REML = F)
+summary(log1)
+log2 = lmer(loglat ~ 0 + condition + (1|stimulusitem1) + (0+condition|subject), 
+             data = dati, 
+             REML = F)
+anova(log0, log1, log2)
+summary(log2)
