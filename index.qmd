@@ -39,4 +39,4 @@ lang: it
 
 [Analisi dei dati IAT con i GLMMs](analisi/Lezione-02a-master-psqt-epifania.pdf)
 
-[Download data - Analisi modelli misti](analisi/data/iat-stimuli-subjects.dat)
+[Download data - Analisi modelli misti](analisi/data/iat-stimuli-subjects.csv)
